@@ -87,7 +87,6 @@ class DailyChallenge {
         this.maxHints = 5;
         this.stats = this.loadStats();
         
-        // Inicializar quando DOM estiver pronto
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.init());
         } else {
@@ -133,8 +132,8 @@ class DailyChallenge {
         document.getElementById('challengeImage').src = this.currentChallenge.image;
         
         this.showFirstHint();
+        this.updateImageReveal();
         
-        // Verificar se já jogou hoje
         const todayKey = `challenge_${dayOfYear}`;
         const todayResult = localStorage.getItem(todayKey);
         
@@ -167,7 +166,35 @@ class DailyChallenge {
             hintsContainer.appendChild(hintElement);
             
             this.updateProgress();
+            this.updateImageReveal();
         }
+    }
+
+    updateImageReveal() {
+        const imageOverlay = document.getElementById('imageOverlay');
+        const revealPercentage = document.getElementById('revealPercentage');
+        
+        // Calcular porcentagem revelada baseada no número de dicas
+        const hintsShown = this.currentHintIndex + 1;
+        const percentage = Math.min(hintsShown * 25, 100);
+        
+        // Atualizar classe do overlay
+        imageOverlay.className = `image-reveal-overlay hints-${hintsShown}`;
+        
+        // Atualizar texto da porcentagem
+        revealPercentage.textContent = `${percentage}%`;
+        
+        console.log(`🖼️ Imagem ${percentage}% revelada (${hintsShown} dicas)`);
+    }
+
+    revealFullImage() {
+        const imageOverlay = document.getElementById('imageOverlay');
+        const revealPercentage = document.getElementById('revealPercentage');
+        
+        imageOverlay.className = 'image-reveal-overlay revealed';
+        revealPercentage.textContent = '100%';
+        
+        console.log('🖼️ Imagem 100% revelada!');
     }
 
     updateProgress() {
@@ -181,21 +208,17 @@ class DailyChallenge {
     setupEventListeners() {
         console.log('🔧 Configurando botões...');
         
-        // Método mais direto - usar onclick
         const submitBtn = document.getElementById('submitBtn');
         const answerInput = document.getElementById('answerInput');
         const giveUpBtn = document.getElementById('giveUpBtn');
         
-        // Botão de enviar
         if (submitBtn) {
             submitBtn.onclick = () => {
                 console.log('🔥 Botão clicado!');
                 this.checkAnswer();
             };
-            console.log('✅ Botão configurado');
         }
         
-        // Campo de resposta
         if (answerInput) {
             answerInput.onkeypress = (e) => {
                 if (e.key === 'Enter') {
@@ -203,21 +226,15 @@ class DailyChallenge {
                     this.checkAnswer();
                 }
             };
-            
-            // Garantir que está habilitado
             answerInput.disabled = false;
             answerInput.readOnly = false;
-            
-            console.log('✅ Campo configurado');
         }
         
-        // Botão desistir
         if (giveUpBtn) {
             giveUpBtn.onclick = () => {
                 console.log('🏳️ Desistir clicado!');
                 this.giveUp();
             };
-            console.log('✅ Botão desistir configurado');
         }
     }
 
@@ -254,6 +271,9 @@ class DailyChallenge {
         const todayKey = `challenge_${dayOfYear}`;
         
         if (isCorrect) {
+            // Revelar imagem completa quando acertar
+            this.revealFullImage();
+            
             resultDiv.innerHTML = `
                 🎉 <strong>Parabéns!</strong> Você acertou!<br>
                 Resposta: <strong>${this.currentChallenge.answer[0].toUpperCase()}</strong><br>
@@ -271,18 +291,17 @@ class DailyChallenge {
             
             this.finishGame();
         } else {
-            // Resposta incorreta
             if (this.currentHintIndex < this.maxHints - 1) {
                 this.addNewHint();
                 resultDiv.innerHTML = `
                     ❌ <strong>Resposta incorreta!</strong><br>
-                    💡 Aqui está uma nova dica para te ajudar. Tente novamente!
+                    💡 Nova dica liberada e mais 25% da imagem revelada!
                 `;
                 resultDiv.className = 'result incorrect';
             } else {
                 resultDiv.innerHTML = `
                     ❌ <strong>Resposta incorreta!</strong><br>
-                    😔 Você usou todas as 5 dicas disponíveis.<br>
+                    😔 Você usou todas as 5 dicas e viu 100% da imagem.<br>
                     <strong>Deseja desistir e ver a resposta?</strong>
                 `;
                 resultDiv.className = 'result final-attempt';
@@ -296,6 +315,9 @@ class DailyChallenge {
     giveUp() {
         if (this.gameFinished) return;
         
+        // Revelar imagem completa quando desistir
+        this.revealFullImage();
+        
         const resultDiv = document.getElementById('result');
         resultDiv.innerHTML = `
             🏳️ <strong>Você desistiu!</strong><br>
@@ -305,7 +327,6 @@ class DailyChallenge {
         `;
         resultDiv.className = 'result revealed';
         
-        // Mostrar dicas restantes
         while (this.currentHintIndex < this.maxHints - 1) {
             this.addNewHint();
         }
@@ -336,7 +357,6 @@ class DailyChallenge {
         const hintsContainer = document.getElementById('hintsContainer');
         hintsContainer.innerHTML = '';
         
-        // Mostrar dicas usadas
         const hintsToShow = Math.min(result.hintsUsed || 1, this.currentChallenge.hints.length);
         for (let i = 0; i < hintsToShow; i++) {
             const hintElement = document.createElement('div');
@@ -348,6 +368,13 @@ class DailyChallenge {
         this.currentHintIndex = (result.hintsUsed || 1) - 1;
         this.attempts = result.attempts || 0;
         this.updateProgress();
+        
+        // Revelar imagem baseada no resultado anterior
+        if (result.correct || result.gaveUp) {
+            this.revealFullImage();
+        } else {
+            this.updateImageReveal();
+        }
         
         if (result.correct) {
             resultDiv.innerHTML = `
@@ -395,7 +422,7 @@ class DailyChallenge {
         document.getElementById('winRate').textContent = `${winRate}%`;
     }
 
-    startCountdown() {
+       startCountdown() {
         const updateCountdown = () => {
             const now = new Date();
             const tomorrow = new Date(now);
