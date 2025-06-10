@@ -2,7 +2,8 @@ class DailyChallenge {
     constructor() {
         this.challenges = [
             {
-                image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&h=600&fit=crop",
+                // PIZZA - Imagem de pizza deliciosa
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop",
                 hints: [
                     "É redondo, tem queijo e todo mundo ama. Nasceu na Itália mas conquistou o mundo!",
                     "Tem massa fina ou grossa, molho de tomate e pode ter vários ingredientes por cima.",
@@ -13,7 +14,8 @@ class DailyChallenge {
                 answer: ["pizza", "piza"]
             },
             {
-                image: "https://images.unsplash.com/photo-1541963463532-d68292c34d19?w=800&h=600&fit=crop",
+                // CAFÉ - Xícara de café fumegante
+                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=600&fit=crop",
                 hints: [
                     "Preto, quente e desperta. É o combustível de muita gente pela manhã!",
                     "Vem do grão torrado e moído. Pode ser expresso, cappuccino ou americano.",
@@ -24,7 +26,8 @@ class DailyChallenge {
                 answer: ["café", "cafe"]
             },
             {
-                image: "https://images.unsplash.com/photo-1415604934674-561df9abf539?w=800&h=600&fit=crop",
+                // LIVRO - Livros empilhados
+                image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop",
                 hints: [
                     "Tem páginas, conta histórias e pode te levar para outros mundos sem sair do lugar.",
                     "Pode ser de ficção, romance, terror ou educativo. Alguns viram filmes famosos.",
@@ -35,7 +38,8 @@ class DailyChallenge {
                 answer: ["livro", "libro"]
             },
             {
-                image: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&h=600&fit=crop",
+                // CACHORRO - Cachorro fofo
+                image: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&h=600&fit=crop",
                 hints: [
                     "Tem quatro patas, late e é o melhor amigo do homem.",
                     "Pode ser pequeno como um Chihuahua ou grande como um Pastor Alemão. Adora brincar de buscar.",
@@ -46,7 +50,8 @@ class DailyChallenge {
                 answer: ["cachorro", "cão", "cao", "dog"]
             },
             {
-                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+                // CÉU - Céu azul com nuvens
+                image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&h=600&fit=crop",
                 hints: [
                     "Azul, infinito e onde as nuvens passeiam. Olhamos para cima para vê-lo.",
                     "Muda de cor durante o dia: azul de manhã, laranja no pôr do sol, escuro à noite.",
@@ -57,7 +62,8 @@ class DailyChallenge {
                 answer: ["céu", "ceu", "sky"]
             },
             {
-                image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=600&fit=crop",
+                // SOL - Sol brilhante
+                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
                 hints: [
                     "Amarelo, brilhante e nos dá energia. Sem ele, não haveria vida na Terra.",
                     "Nasce no leste e se põe no oeste. É uma estrela gigante no centro do nosso sistema.",
@@ -68,7 +74,8 @@ class DailyChallenge {
                 answer: ["sol", "sun"]
             },
             {
-                image: "https://images.unsplash.com/photo-1502780402662-acc01917949e?w=800&h=600&fit=crop",
+                // ÁGUA - Água cristalina
+                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
                 hints: [
                     "Cristalina, essencial e mata a sede. Cobre a maior parte do nosso planeta.",
                     "Pode estar nos três estados: líquida, sólida (gelo) ou gasosa (vapor).",
@@ -77,16 +84,52 @@ class DailyChallenge {
                     "💧 Rima com 'mágoa' e é essencial para todos os seres vivos!"
                 ],
                 answer: ["água", "agua", "water"]
+            },
+            {
+                // GATO - Gato fofo (desafio extra)
+                image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&h=600&fit=crop",
+                hints: [
+                    "Tem quatro patas, mia e é independente. Dorme muito durante o dia.",
+                    "Tem bigodes, unhas afiadas e adora brincar com novelos de lã.",
+                    "Ronrona quando está feliz e pode ter pelos longos ou curtos.",
+                    "Caça ratos, tem visão noturna excelente e sempre cai em pé.",
+                    "🐱 Rima com 'pato' e é famoso por ter 7 vidas!"
+                ],
+                answer: ["gato", "cat"]
+            },
+            {
+                // FLOR - Flores coloridas (desafio extra)
+                image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop",
+                hints: [
+                    "Colorida, perfumada e cresce no jardim. As abelhas adoram visitá-la!",
+                    "Tem pétalas delicadas e pode ser vermelha, amarela, rosa ou branca.",
+                    "É dada de presente no Dia das Mães e simboliza amor e carinho.",
+                    "Precisa de água, sol e terra para crescer. Rosa é um tipo famoso.",
+                    "🌸 Rima com 'cor' e deixa qualquer ambiente mais bonito!"
+                ],
+                answer: ["flor", "flower"]
+            },
+            {
+                // CARRO - Carro moderno (desafio extra)
+                image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop",
+                hints: [
+                    "Tem quatro rodas e nos leva de um lugar para outro rapidamente.",
+                    "Precisa de combustível para funcionar e tem volante para dirigir.",
+                    "Pode ser sedan, SUV, hatchback ou conversível. Tem faróis e retrovisores.",
+                    "Precisa de carteira de motorista para dirigir e tem cinto de segurança.",
+                    "🚗 Rima com 'barro' e é o meio de transporte mais comum nas cidades!"
+                ],
+                answer: ["carro", "car", "automóvel", "automovel"]
             }
         ];
-        
+
         this.currentChallenge = null;
         this.currentHintIndex = 0;
         this.attempts = 0;
         this.gameFinished = false;
         this.maxHints = 5;
         this.stats = this.loadStats();
-        
+
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.init());
         } else {
@@ -106,11 +149,11 @@ class DailyChallenge {
 
     updateDate() {
         const now = new Date();
-        const options = { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
+        const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
         };
         document.getElementById('dateDisplay').textContent = now.toLocaleDateString('pt-BR', options);
     }
@@ -127,16 +170,16 @@ class DailyChallenge {
         const dayOfYear = this.getDayOfYear();
         const challengeIndex = dayOfYear % this.challenges.length;
         this.currentChallenge = this.challenges[challengeIndex];
-        
+
         document.getElementById('challengeNumber').textContent = `Desafio #${dayOfYear}`;
         document.getElementById('challengeImage').src = this.currentChallenge.image;
-        
+
         this.showFirstHint();
         this.updateImageReveal();
-        
+
         const todayKey = `challenge_${dayOfYear}`;
         const todayResult = localStorage.getItem(todayKey);
-        
+
         if (todayResult) {
             this.showPreviousResult(JSON.parse(todayResult));
         }
@@ -145,12 +188,12 @@ class DailyChallenge {
     showFirstHint() {
         const hintsContainer = document.getElementById('hintsContainer');
         hintsContainer.innerHTML = '';
-        
+
         const hintElement = document.createElement('div');
         hintElement.className = 'hint';
         hintElement.textContent = this.currentChallenge.hints[0];
         hintsContainer.appendChild(hintElement);
-        
+
         this.currentHintIndex = 0;
         this.updateProgress();
     }
@@ -158,67 +201,73 @@ class DailyChallenge {
     addNewHint() {
         if (this.currentHintIndex < this.maxHints - 1) {
             this.currentHintIndex++;
-            
+
             const hintsContainer = document.getElementById('hintsContainer');
             const hintElement = document.createElement('div');
             hintElement.className = 'hint';
             hintElement.textContent = this.currentChallenge.hints[this.currentHintIndex];
             hintsContainer.appendChild(hintElement);
-            
+
             this.updateProgress();
             this.updateImageReveal();
         }
     }
 
+
     updateImageReveal() {
         const imageOverlay = document.getElementById('imageOverlay');
         const revealPercentage = document.getElementById('revealPercentage');
-        
-        // Calcular porcentagem revelada baseada no número de dicas
+        const imageContainer = document.querySelector('.image-container');
+
         const hintsShown = this.currentHintIndex + 1;
         const percentage = Math.min(hintsShown * 25, 100);
-        
+
         // Atualizar classe do overlay
         imageOverlay.className = `image-reveal-overlay hints-${hintsShown}`;
-        
+
+        // Atualizar classe do container da imagem para blur
+        imageContainer.className = `image-container blurred-${hintsShown}`;
+
         // Atualizar texto da porcentagem
         revealPercentage.textContent = `${percentage}%`;
-        
+
         console.log(`🖼️ Imagem ${percentage}% revelada (${hintsShown} dicas)`);
     }
 
     revealFullImage() {
         const imageOverlay = document.getElementById('imageOverlay');
         const revealPercentage = document.getElementById('revealPercentage');
-        
+        const imageContainer = document.querySelector('.image-container');
+
         imageOverlay.className = 'image-reveal-overlay revealed';
+        imageContainer.className = 'image-container revealed';
         revealPercentage.textContent = '100%';
-        
+
         console.log('🖼️ Imagem 100% revelada!');
     }
 
     updateProgress() {
         document.getElementById('currentHint').textContent = this.currentHintIndex + 1;
         document.getElementById('attempts').textContent = this.attempts;
-        
+
         const progressPercentage = ((this.currentHintIndex + 1) / this.maxHints) * 100;
         document.getElementById('progressFill').style.width = `${progressPercentage}%`;
     }
 
     setupEventListeners() {
         console.log('🔧 Configurando botões...');
-        
+
         const submitBtn = document.getElementById('submitBtn');
         const answerInput = document.getElementById('answerInput');
         const giveUpBtn = document.getElementById('giveUpBtn');
-        
+
         if (submitBtn) {
             submitBtn.onclick = () => {
                 console.log('🔥 Botão clicado!');
                 this.checkAnswer();
             };
         }
-        
+
         if (answerInput) {
             answerInput.onkeypress = (e) => {
                 if (e.key === 'Enter') {
@@ -229,7 +278,7 @@ class DailyChallenge {
             answerInput.disabled = false;
             answerInput.readOnly = false;
         }
-        
+
         if (giveUpBtn) {
             giveUpBtn.onclick = () => {
                 console.log('🏳️ Desistir clicado!');
@@ -240,18 +289,18 @@ class DailyChallenge {
 
     checkAnswer() {
         console.log('🎯 Verificando resposta...');
-        
+
         if (this.gameFinished) {
             console.log('❌ Jogo já finalizado');
             return;
         }
-        
+
         const answerInput = document.getElementById('answerInput');
         const resultDiv = document.getElementById('result');
-        
+
         const userAnswer = answerInput.value.trim().toLowerCase();
         console.log('📝 Resposta:', userAnswer);
-        
+
         if (!userAnswer) {
             resultDiv.innerHTML = '⚠️ <strong>Por favor, digite uma resposta!</strong>';
             resultDiv.className = 'result incorrect';
@@ -261,7 +310,7 @@ class DailyChallenge {
         this.attempts++;
         this.updateProgress();
 
-        const isCorrect = this.currentChallenge.answer.some(answer => 
+        const isCorrect = this.currentChallenge.answer.some(answer =>
             answer.toLowerCase() === userAnswer
         );
 
@@ -269,11 +318,10 @@ class DailyChallenge {
 
         const dayOfYear = this.getDayOfYear();
         const todayKey = `challenge_${dayOfYear}`;
-        
+
         if (isCorrect) {
-            // Revelar imagem completa quando acertar
             this.revealFullImage();
-            
+
             resultDiv.innerHTML = `
                 🎉 <strong>Parabéns!</strong> Você acertou!<br>
                 Resposta: <strong>${this.currentChallenge.answer[0].toUpperCase()}</strong><br>
@@ -281,14 +329,14 @@ class DailyChallenge {
             `;
             resultDiv.className = 'result correct';
             this.updateStats(true);
-            
+
             localStorage.setItem(todayKey, JSON.stringify({
-                correct: true, 
-                answer: userAnswer, 
+                correct: true,
+                answer: userAnswer,
                 attempts: this.attempts,
                 hintsUsed: this.currentHintIndex + 1
             }));
-            
+
             this.finishGame();
         } else {
             if (this.currentHintIndex < this.maxHints - 1) {
@@ -306,7 +354,7 @@ class DailyChallenge {
                 `;
                 resultDiv.className = 'result final-attempt';
             }
-            
+
             answerInput.value = '';
             answerInput.focus();
         }
@@ -314,10 +362,9 @@ class DailyChallenge {
 
     giveUp() {
         if (this.gameFinished) return;
-        
-        // Revelar imagem completa quando desistir
+
         this.revealFullImage();
-        
+
         const resultDiv = document.getElementById('result');
         resultDiv.innerHTML = `
             🏳️ <strong>Você desistiu!</strong><br>
@@ -326,22 +373,22 @@ class DailyChallenge {
             Não desanime, tente novamente amanhã! 💪
         `;
         resultDiv.className = 'result revealed';
-        
+
         while (this.currentHintIndex < this.maxHints - 1) {
             this.addNewHint();
         }
-        
+
         const dayOfYear = this.getDayOfYear();
         const todayKey = `challenge_${dayOfYear}`;
-        
+
         this.updateStats(false);
         localStorage.setItem(todayKey, JSON.stringify({
-            correct: false, 
-            gaveUp: true, 
+            correct: false,
+            gaveUp: true,
             attempts: this.attempts || 1,
             hintsUsed: this.maxHints
         }));
-        
+
         this.finishGame();
     }
 
@@ -356,7 +403,7 @@ class DailyChallenge {
         const resultDiv = document.getElementById('result');
         const hintsContainer = document.getElementById('hintsContainer');
         hintsContainer.innerHTML = '';
-        
+
         const hintsToShow = Math.min(result.hintsUsed || 1, this.currentChallenge.hints.length);
         for (let i = 0; i < hintsToShow; i++) {
             const hintElement = document.createElement('div');
@@ -364,18 +411,17 @@ class DailyChallenge {
             hintElement.textContent = this.currentChallenge.hints[i];
             hintsContainer.appendChild(hintElement);
         }
-        
+
         this.currentHintIndex = (result.hintsUsed || 1) - 1;
         this.attempts = result.attempts || 0;
         this.updateProgress();
-        
-        // Revelar imagem baseada no resultado anterior
+
         if (result.correct || result.gaveUp) {
             this.revealFullImage();
         } else {
             this.updateImageReveal();
         }
-        
+
         if (result.correct) {
             resultDiv.innerHTML = `
                 ✅ <strong>Você já acertou hoje!</strong><br>
@@ -415,26 +461,26 @@ class DailyChallenge {
 
         document.getElementById('totalPlayed').textContent = this.stats.totalPlayed;
         document.getElementById('totalCorrect').textContent = this.stats.totalCorrect;
-        
-        const winRate = this.stats.totalPlayed > 0 
+
+        const winRate = this.stats.totalPlayed > 0
             ? Math.round((this.stats.totalCorrect / this.stats.totalPlayed) * 100)
             : 0;
         document.getElementById('winRate').textContent = `${winRate}%`;
     }
 
-       startCountdown() {
+    startCountdown() {
         const updateCountdown = () => {
             const now = new Date();
             const tomorrow = new Date(now);
             tomorrow.setDate(tomorrow.getDate() + 1);
             tomorrow.setHours(0, 0, 0, 0);
-            
+
             const diff = tomorrow - now;
             const hours = Math.floor(diff / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('countdown').textContent = 
+
+            document.getElementById('countdown').textContent =
                 `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         };
 
