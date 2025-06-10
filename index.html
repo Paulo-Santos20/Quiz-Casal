@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dica do Dia - Jogo de Adivinhação</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Dica do Dia</h1>
+            <p class="subtitle">Descubra a palavra ou frase através da foto e dicas!</p>
+            <div class="date-display" id="dateDisplay"></div>
+        </header>
+
+        <main class="game-container">
+            <div class="challenge-card">
+                <div class="image-container">
+                    <img id="challengeImage" src="" alt="Imagem da dica" />
+                    <div class="image-overlay">
+                        <span class="challenge-number" id="challengeNumber"></span>
+                    </div>
+                </div>
+                
+                <div class="content">
+                    <h2>💡 Dicas</h2>
+                    <div class="hints-container" id="hintsContainer">
+                        <!-- Dicas serão adicionadas dinamicamente -->
+                    </div>
+                    
+                    <div class="hint-progress">
+                        <span>Dica <span id="currentHint">1</span> de 5 | Tentativas: <span id="attempts">0</span></span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-section">
+                        <input 
+                            type="text" 
+                            id="answerInput" 
+                            placeholder="Digite sua resposta aqui..."
+                            maxlength="50"
+                        />
+                        <button id="submitBtn" class="submit-btn" type="button">
+                            Tentar Resposta
+                        </button>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="giveUpBtn" class="give-up-btn" type="button">
+                            🏳️ Desistir e Ver Resposta
+                        </button>
+                    </div>
+                    
+                    <div class="result" id="result"></div>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalPlayed">0</span>
+                            <span class="stat-label">Jogados</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalCorrect">0</span>
+                            <span class="stat-label">Acertos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="winRate">0%</span>
+                            <span class="stat-label">Taxa de Acerto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="next-challenge">
+                <p>🕐 Próximo desafio em: <span id="countdown"></span></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Volte amanhã para um novo desafio! 🌟</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
