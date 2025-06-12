@@ -2,124 +2,184 @@ class DailyChallenge {
     constructor() {
         this.challenges = [
             {
-                // PIZZA - Imagem de pizza deliciosa
-                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop",
+                // ANO NOVO 2023 - Eu e Rafhaela no ano novo de 2023
+                image: "./img/ano2023.jpeg",
                 hints: [
-                    "É redondo, tem queijo e todo mundo ama. Nasceu na Itália mas conquistou o mundo!",
-                    "Tem massa fina ou grossa, molho de tomate e pode ter vários ingredientes por cima.",
-                    "É assada no forno, cortada em fatias e muito popular nas sextas-feiras.",
-                    "Rima com 'preguiça' e tem origem napolitana. Margherita é um tipo famoso.",
-                    "🍕 Começa com 'P' e termina com 'A'. É o prato italiano mais famoso do mundo!"
+                    "Uma celebração especial que marca o fim de um ciclo e o início de outro, cheia de esperanças.",
+                    "Foi a primeira vez que este casal passou essa data mágica juntos, criando memórias inesquecíveis.",
+                    "A foto mostra dois apaixonados celebrando a virada, com fogos de artifício ao fundo.",
+                    "Festa em 2023.",
+                    "🎆 Festa após a favorita de momo!"
                 ],
-                answer: ["pizza", "piza"]
+                answer: ["ano novo 2023", "ano novo"]
             },
             {
-                // CAFÉ - Xícara de café fumegante
-                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=600&fit=crop",
+                // ANO NOVO 2024 - Eu, Rafhaela e Kenai com árvore de natal
+                image: "./img/ano2024.jpeg",
                 hints: [
-                    "Preto, quente e desperta. É o combustível de muita gente pela manhã!",
-                    "Vem do grão torrado e moído. Pode ser expresso, cappuccino ou americano.",
-                    "Tem cafeína e pode ser bebido com leite, açúcar ou puro.",
-                    "O Brasil é um dos maiores produtores mundiais. Starbucks é uma marca famosa.",
-                    "☕ Rima com 'sofá' e deixa muita gente acordada à noite!"
+                    "Uma celebração ainda mais especial, agora com um novo membro da família participando.",
+                    "Kenai, o filho de quatro patas, estava no braço durante esta comemoração .",
+                    "A árvore de Natal ao fundo mostra que foi uma celebração dupla: Natal e ...",
+                    "2024 trouxe muitas alegrias para esta família, e começou com esta foto linda.",
+                    "🎄 A virada para 2024 com o trio completo: papai, mamãe e Kenai!"
                 ],
-                answer: ["café", "cafe"]
+                answer: ["ano novo 2024", "ano novo"]
             },
             {
-                // LIVRO - Livros empilhados
-                image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop",
+                // BK - Primeira vez dela no BK com meus amigos
+                image: "./img/bk.jpeg",
                 hints: [
-                    "Tem páginas, conta histórias e pode te levar para outros mundos sem sair do lugar.",
-                    "Pode ser de ficção, romance, terror ou educativo. Alguns viram filmes famosos.",
-                    "Tem capa, contracapa e pode ser físico ou digital (e-book).",
-                    "Biblioteca é onde você encontra milhares deles. Harry Potter é uma série famosa.",
-                    "📚 Rima com 'futuro' e você está lendo suas instruções agora mesmo!"
+                    "Um momento especial de integração, onde ela conheceu melhor a turma dele.",
+                    "Foi a primeira vez que ela foi neste famoso fast-food com os amigos dele.",
+                    "Uma rede de lanchonetes famosa pelo slogan 'Do seu jeito' e pelo sanduíche Whopper.",
+                    "Momento marcante onde ela se sentiu acolhida pelo grupo de amigos.",
+                    "🍔 A primeira vez dela nesse lugar com a galera!"
                 ],
-                answer: ["livro", "libro"]
+                answer: ["bk", "burger king"]
             },
             {
-                // CACHORRO - Cachorro fofo
-                image: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&h=600&fit=crop",
+                // CARNAVAL - Com tiara emprestada da Marta
+                image: "./img/carnaval.jpeg",
                 hints: [
-                    "Tem quatro patas, late e é o melhor amigo do homem.",
-                    "Pode ser pequeno como um Chihuahua ou grande como um Pastor Alemão. Adora brincar de buscar.",
-                    "Balança o rabo quando está feliz e pode aprender truques como 'senta' e 'fica'.",
-                    "Precisa passear na coleira, come ração e alguns são usados como cães-guia.",
-                    "🐕 Rima com 'socorro' e é o oposto de gato na rivalidade clássica!"
+                    "A festa mais colorida e animada do Brasil, onde todo mundo se fantasia.",
+                    "Nesta foto especial, há uma tiara que foi emprestada por Marta.",
+                    "Uma celebração cheia de música, dança e muita alegria nas ruas.",
+                    "O acessório especial na cabeça foi um empréstimo carinhoso da mãe dela.",
+                    "🎭 A festa mais famosa do Brasil, com uma tiara emprestada pela Marta!"
                 ],
-                answer: ["cachorro", "cão", "cao", "dog"]
+                answer: ["carnaval", "festa de carnaval"]
             },
             {
-                // CÉU - Céu azul com nuvens
-                image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&h=600&fit=crop",
+                // CINEMA - Foto na parte de fora, lugar que mais saem
+                image: "./img/cinema.jpeg",
                 hints: [
-                    "Azul, infinito e onde as nuvens passeiam. Olhamos para cima para vê-lo.",
-                    "Muda de cor durante o dia: azul de manhã, laranja no pôr do sol, escuro à noite.",
-                    "Os pássaros voam por ele e os aviões atravessam suas nuvens.",
-                    "Tem estrelas à noite e o sol durante o dia. Pode estar limpo ou nublado.",
-                    "☁️ Rima com 'véu' e é onde fica o arco-íris depois da chuva!"
+                    "O local de encontro favorito deste casal apaixonado para seus encontros.",
+                    "A foto foi tirada na parte externa deste lugar de entretenimento.",
+                    "É onde eles mais saem juntos para se divertir e assistir filmes.",
+                    "Um lugar escuro onde as pessoas se sentam para assistir histórias na tela grande.",
+                    "🎬 O programa favorito do casal: sessão de filme no lugar que mais frequentam!"
                 ],
-                answer: ["céu", "ceu", "sky"]
+                answer: ["cinema"]
             },
             {
-                // SOL - Sol brilhante
-                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+                // DANÇANDO - Primeira vez com Marta, Rafhaela passou vergonha
+                image: "./img/dancando.jpeg",
                 hints: [
-                    "Amarelo, brilhante e nos dá energia. Sem ele, não haveria vida na Terra.",
-                    "Nasce no leste e se põe no oeste. É uma estrela gigante no centro do nosso sistema.",
-                    "Produz luz e calor, causa bronzeado e faz as plantas crescerem.",
-                    "Tem manchas solares e pode causar tempestades magnéticas. É muito maior que a Terra.",
-                    "☀️ Rima com 'gol' e você não deve olhar diretamente para ele!"
+                    "Um momento muito especial e marcante: a primeira saída com a sogra.",
+                    "Na foto estão três pessoas: Eu, Rafhaela e Marta se divertindo.",
+                    "Foi a primeira vez que ele saiu com a mãe de Rafhaela para se divertir.",
+                    "Rafhaela ficou com muita vergonha durante esta atividade rítmica.",
+                    "💃 A primeira vez saindo com a sogra Marta, onde todos se movimentaram no ritmo da música!"
                 ],
-                answer: ["sol", "sun"]
+                answer: ["dançando", "dança"]
             },
             {
-                // ÁGUA - Água cristalina
-                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
+                // DORMINDO - Rafhaela dormindo
+                image: "./img/dormindo.jpeg",
                 hints: [
-                    "Cristalina, essencial e mata a sede. Cobre a maior parte do nosso planeta.",
-                    "Pode estar nos três estados: líquida, sólida (gelo) ou gasosa (vapor).",
-                    "Precisamos beber pelo menos 2 litros por dia. Forma oceanos, rios e lagos.",
-                    "Ferve a 100°C e congela a 0°C. É formada por hidrogênio e oxigênio (H2O).",
-                    "💧 Rima com 'mágoa' e é essencial para todos os seres vivos!"
+                    "Um momento de pura tranquilidade e paz, capturado em uma foto especial.",
+                    "Rafhaela em seu estado mais sereno e angelical, descansando.",
+                    "Uma imagem que mostra o lado mais doce e relaxado da namorada.",
+                    "Ela estava em completo repouso, parecendo uma verdadeira princesa.",
+                    "😴 A princesa Rafhaela em seu momento mais angelical de descanso!"
                 ],
-                answer: ["água", "agua", "water"]
+                answer: ["dormindo", "sono", "descansando", "momo", "baby"]
             },
             {
-                // GATO - Gato fofo (desafio extra)
-                image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&h=600&fit=crop",
+                // FORMATURA - Antes da formatura, vestido vermelho, roupa social
+                image: "./img/formatura.jpeg",
                 hints: [
-                    "Tem quatro patas, mia e é independente. Dorme muito durante o dia.",
-                    "Tem bigodes, unhas afiadas e adora brincar com novelos de lã.",
-                    "Ronrona quando está feliz e pode ter pelos longos ou curtos.",
-                    "Caça ratos, tem visão noturna excelente e sempre cai em pé.",
-                    "🐱 Rima com 'pato' e é famoso por ter 7 vidas!"
+                    "Um dos dias mais importantes e emocionantes na vida acadêmica dela.",
+                    "Ele estava de roupa social e ela com um vestido vermelho deslumbrante.",
+                    "Foi o dia que ele sentiu um orgulho imenso pela conquista dela.",
+                    "A cerimônia que marca o fim dos estudos e o início da vida profissional.",
+                    "🎓 O dia da conquista acadêmica dela, celebrado com muito orgulho e elegância!"
                 ],
-                answer: ["gato", "cat"]
+                answer: ["formatura", "diploma", "orgulho"]
             },
             {
-                // FLOR - Flores coloridas (desafio extra)
-                image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop",
+                // JANTAR - Jantar romântico a base de velas, camisa social e bermuda
+                image: "./img/jantar.jpeg",
                 hints: [
-                    "Colorida, perfumada e cresce no jardim. As abelhas adoram visitá-la!",
-                    "Tem pétalas delicadas e pode ser vermelha, amarela, rosa ou branca.",
-                    "É dada de presente no Dia das Mães e simboliza amor e carinho.",
-                    "Precisa de água, sol e terra para crescer. Rosa é um tipo famoso.",
-                    "🌸 Rima com 'cor' e deixa qualquer ambiente mais bonito!"
+                    "Um momento romântico muito especial, iluminado por velas.",
+                    "Ele estava com uma combinação inusitada: camisa social e bermuda.",
+                    "Foi um encontro gastronômico íntimo e cheio de carinho entre o casal.",
+                    "As velas criaram uma atmosfera perfeita para este momento a dois.",
+                    "🕯️ Um encontro romântico à luz de velas, com um dress code bem descontraído!"
                 ],
-                answer: ["flor", "flower"]
+                answer: ["jantar", "romântico", "jantar romântico"]
             },
             {
-                // CARRO - Carro moderno (desafio extra)
-                image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop",
+                // NATAL 2023 - Data preferida dela, com Kenai e árvore cheia de presentes
+                image: "./img/natal2023.jpeg",
                 hints: [
-                    "Tem quatro rodas e nos leva de um lugar para outro rapidamente.",
-                    "Precisa de combustível para funcionar e tem volante para dirigir.",
-                    "Pode ser sedan, SUV, hatchback ou conversível. Tem faróis e retrovisores.",
-                    "Precisa de carteira de motorista para dirigir e tem cinto de segurança.",
-                    "🚗 Rima com 'barro' e é o meio de transporte mais comum nas cidades!"
+                    "A data mais especial e preferida de Rafhaela durante todo o ano.",
+                    "Kenai também participou desta celebração mágica e cheia de presentes.",
+                    "A árvore estava repleta de presentes, criando um cenário perfeito.",
+                    "Uma festa cristã que celebra o nascimento de Jesus, cheia de amor e união.",
+                    "🎄 2 anos atrás."
                 ],
-                answer: ["carro", "car", "automóvel", "automovel"]
+                answer: ["natal 2023", "natal de 2023"]
+            },
+            {
+                // NOIVADO - Foto do noivado, combinando preto e branco como zebras
+                image: "./img/noivado.jpeg",
+                hints: [
+                    "O dia mais importante na vida deste casal apaixonado, uma celebração única.",
+                    "Eles estavam combinando as roupas de uma forma muito especial.",
+                    "A combinação de preto e branco os fez parecer duas zebras estilosas.",
+                    "O momento em que eles oficializaram seu compromisso de amor eterno.",
+                    "💍 O dia do compromisso oficial, vestidos como duas zebras elegantes!"
+                ],
+                answer: ["noivado", "zebras"]
+            },
+            {
+                // ORGULHO - Segurando diploma, ela de farda e ele de social
+                image: "./img/orgulho.jpeg",
+                hints: [
+                    "Um momento de muito orgulho e conquista, registrado em uma foto especial.",
+                    "Ela estava com a farda da formatura e ele de roupa social elegante.",
+                    "Os dois estão segurando o símbolo máximo da conquista acadêmica dela.",
+                    "O sentimento que ele teve neste dia foi de orgulho imenso pela namorada.",
+                    "🏆 O momento do orgulho máximo, segurando juntos o símbolo da conquista!"
+                ],
+                answer: ["orgulho", "diploma", "conquista"]
+            },
+            {
+                // PALHAÇA - Maquiada por Valentina
+                image: "./img/palhaca.jpeg",
+                hints: [
+                    "Um momento muito divertido e descontraído, cheio de cores e risadas.",
+                    "Valentina, a sobrinha artista, foi a responsável por esta transformação.",
+                    "Rafhaela se deixou ser maquiada e o resultado foi hilário e adorável.",
+                    "Uma personagem circense conhecida por fazer as pessoas rirem.",
+                    "🤡 Uma transformação divertida feita pelas mãozinhas da sobrinha Valentina!"
+                ],
+                answer: ["palhaça", "maquiagem"]
+            },
+            {
+                // BUQUÊ - Girassóis e ursinho, flores que ela mais ama
+                image: "./img/buque.jpeg",
+                hints: [
+                    "Um presente muito especial com as flores favoritas dela.",
+                    "Ela está segurando um buquê e também ganhou um ursinho de pelúcia.",
+                    "As flores amarelas que ela mais ama, que sempre seguem o sol.",
+                    "Girassóis são as flores preferidas dela, símbolo de alegria e energia.",
+                    "🌻 As flores amarelas favoritas dela, acompanhadas de um ursinho fofo!"
+                ],
+                answer: ["buque de girassol", "girassol"]
+            },
+            {
+                // VIAGEM - Primeira viagem com amigos dela para outra cidade
+                image: "./img/viagem.jpeg",
+                hints: [
+                    "A primeira aventura deles para fora da cidade natal.",
+                    "Foi uma experiência especial viajando com os amigos dela.",
+                    "Uma oportunidade de conhecer melhor o círculo de amizades dela.",
+                    "A primeira vez que eles saíram da cidade juntos para se divertir.",
+                    "✈️ A primeira aventura para outra cidade com a turma de amigos dela!"
+                ],
+                answer: ["viagem", "amigos"]
             }
         ];
 
@@ -172,7 +232,43 @@ class DailyChallenge {
         this.currentChallenge = this.challenges[challengeIndex];
 
         document.getElementById('challengeNumber').textContent = `Desafio #${dayOfYear}`;
-        document.getElementById('challengeImage').src = this.currentChallenge.image;
+
+        // Carregar imagem local com tratamento de erro e ajuste de container
+        const challengeImage = document.getElementById('challengeImage');
+        const imageContainer = document.querySelector('.image-container');
+
+        challengeImage.src = this.currentChallenge.image;
+
+        // Detectar orientação da imagem quando carregar
+        challengeImage.onload = () => {
+            const aspectRatio = challengeImage.naturalWidth / challengeImage.naturalHeight;
+
+            // Remover classes anteriores
+            imageContainer.classList.remove('landscape', 'portrait', 'square', 'wide', 'tall');
+
+            // Adicionar classe baseada na orientação
+            if (aspectRatio > 1.5) {
+                imageContainer.classList.add('wide');
+            } else if (aspectRatio > 1.2) {
+                imageContainer.classList.add('landscape');
+            } else if (aspectRatio > 0.8) {
+                imageContainer.classList.add('square');
+            } else if (aspectRatio > 0.6) {
+                imageContainer.classList.add('portrait');
+            } else {
+                imageContainer.classList.add('tall');
+            }
+
+            console.log(`📐 Imagem carregada - Proporção: ${aspectRatio.toFixed(2)}`);
+        };
+
+        // Adicionar tratamento de erro para imagens não encontradas
+        challengeImage.onerror = () => {
+            console.warn(`⚠️ Imagem não encontrada: ${this.currentChallenge.image}`);
+            challengeImage.src = './img/placeholder.jpg';
+            challengeImage.alt = 'Imagem não disponível';
+            imageContainer.classList.add('square');
+        };
 
         this.showFirstHint();
         this.updateImageReveal();
@@ -213,7 +309,6 @@ class DailyChallenge {
         }
     }
 
-
     updateImageReveal() {
         const imageOverlay = document.getElementById('imageOverlay');
         const revealPercentage = document.getElementById('revealPercentage');
@@ -222,11 +317,14 @@ class DailyChallenge {
         const hintsShown = this.currentHintIndex + 1;
         const percentage = Math.min(hintsShown * 25, 100);
 
+        // Remover classes anteriores
+        imageContainer.classList.remove('blurred-1', 'blurred-2', 'blurred-3', 'blurred-4', 'blurred-5', 'revealed', 'no-blur');
+
         // Atualizar classe do overlay
         imageOverlay.className = `image-reveal-overlay hints-${hintsShown}`;
 
         // Atualizar classe do container da imagem para blur
-        imageContainer.className = `image-container blurred-${hintsShown}`;
+        imageContainer.classList.add(`blurred-${hintsShown}`);
 
         // Atualizar texto da porcentagem
         revealPercentage.textContent = `${percentage}%`;
@@ -239,11 +337,17 @@ class DailyChallenge {
         const revealPercentage = document.getElementById('revealPercentage');
         const imageContainer = document.querySelector('.image-container');
 
+        // Remover todas as classes de blur
+        imageContainer.classList.remove('blurred-1', 'blurred-2', 'blurred-3', 'blurred-4', 'blurred-5');
+
+        // Adicionar classes de revelação completa
         imageOverlay.className = 'image-reveal-overlay revealed';
-        imageContainer.className = 'image-container revealed';
+        imageContainer.classList.add('revealed', 'no-blur');
+
+        // Atualizar texto da porcentagem
         revealPercentage.textContent = '100%';
 
-        console.log('🖼️ Imagem 100% revelada!');
+        console.log('🖼️ Imagem 100% revelada - Blur removido!');
     }
 
     updateProgress() {
@@ -322,9 +426,10 @@ class DailyChallenge {
         if (isCorrect) {
             this.revealFullImage();
 
+            // CORREÇÃO: Mostrar a resposta que o usuário digitou
             resultDiv.innerHTML = `
                 🎉 <strong>Parabéns!</strong> Você acertou!<br>
-                Resposta: <strong>${this.currentChallenge.answer[0].toUpperCase()}</strong><br>
+                Resposta: <strong>${userAnswer.toUpperCase()}</strong><br>
                 Tentativas: <strong>${this.attempts}</strong> | Dicas usadas: <strong>${this.currentHintIndex + 1}</strong>
             `;
             resultDiv.className = 'result correct';
@@ -332,7 +437,7 @@ class DailyChallenge {
 
             localStorage.setItem(todayKey, JSON.stringify({
                 correct: true,
-                answer: userAnswer,
+                answer: userAnswer, // Salvar a resposta do usuário
                 attempts: this.attempts,
                 hintsUsed: this.currentHintIndex + 1
             }));
@@ -386,7 +491,8 @@ class DailyChallenge {
             correct: false,
             gaveUp: true,
             attempts: this.attempts || 1,
-            hintsUsed: this.maxHints
+            hintsUsed: this.maxHints,
+            correctAnswer: this.currentChallenge.answer[0]
         }));
 
         this.finishGame();
@@ -423,6 +529,7 @@ class DailyChallenge {
         }
 
         if (result.correct) {
+            // CORREÇÃO: Mostrar a resposta que o usuário digitou anteriormente
             resultDiv.innerHTML = `
                 ✅ <strong>Você já acertou hoje!</strong><br>
                 Sua resposta: <strong>${result.answer.toUpperCase()}</strong><br>
@@ -430,9 +537,10 @@ class DailyChallenge {
             `;
             resultDiv.className = 'result correct';
         } else if (result.gaveUp) {
+            const correctAnswer = result.correctAnswer || this.currentChallenge.answer[0];
             resultDiv.innerHTML = `
                 📝 <strong>Você desistiu hoje!</strong><br>
-                A resposta era: <strong>${this.currentChallenge.answer[0].toUpperCase()}</strong><br>
+                A resposta era: <strong>${correctAnswer.toUpperCase()}</strong><br>
                 Tentativas: <strong>${result.attempts}</strong> | Dicas usadas: <strong>${result.hintsUsed}</strong><br>
                 Tente novamente amanhã! 💪
             `;
