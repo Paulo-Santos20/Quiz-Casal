@@ -107,47 +107,47 @@ header h1 {
     transform: scale(1.05);
 }
 
-/* Sistema de Revelação da Imagem com Blur Intenso */
+/* Sistema de Revelação da Imagem com Blur Reduzido */
 .image-reveal-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
     transition: all 0.8s ease-in-out;
-    backdrop-filter: blur(25px) saturate(0.5);
+    backdrop-filter: blur(15px) saturate(0.6);
 }
 
-/* Estados de revelação baseados no número de dicas com blur progressivo */
+/* Estados de revelação baseados no número de dicas com blur REDUZIDO */
 .image-reveal-overlay.hints-1 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 75%);
-    backdrop-filter: blur(30px) saturate(0.3);
+    backdrop-filter: blur(15px) saturate(0.6);
 }
 
 .image-reveal-overlay.hints-2 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-    backdrop-filter: blur(20px) saturate(0.5);
+    backdrop-filter: blur(10px) saturate(0.7);
 }
 
 .image-reveal-overlay.hints-3 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 25%, 0 25%);
-    backdrop-filter: blur(15px) saturate(0.7);
+    backdrop-filter: blur(6px) saturate(0.8);
 }
 
 .image-reveal-overlay.hints-4 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
-    backdrop-filter: blur(8px) saturate(0.8);
+    backdrop-filter: blur(3px) saturate(0.9);
 }
 
 .image-reveal-overlay.hints-5 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-    backdrop-filter: blur(3px) saturate(0.9);
+    backdrop-filter: blur(1px) saturate(0.95);
 }
 
 /* CORREÇÃO: Garantir que overlay revelado não tenha blur */
@@ -158,25 +158,25 @@ header h1 {
     transition: all 0.8s ease-in-out;
 }
 
-/* Blur adicional na própria imagem para máximo efeito */
+/* Blur adicional na própria imagem REDUZIDO */
 .image-container.blurred-1 img {
-    filter: blur(25px) brightness(0.4) saturate(0.3);
+    filter: blur(12px) brightness(0.6) saturate(0.6);
 }
 
 .image-container.blurred-2 img {
-    filter: blur(18px) brightness(0.5) saturate(0.5);
+    filter: blur(8px) brightness(0.7) saturate(0.7);
 }
 
 .image-container.blurred-3 img {
-    filter: blur(12px) brightness(0.6) saturate(0.7);
+    filter: blur(5px) brightness(0.8) saturate(0.8);
 }
 
 .image-container.blurred-4 img {
-    filter: blur(6px) brightness(0.8) saturate(0.9);
+    filter: blur(3px) brightness(0.9) saturate(0.9);
 }
 
 .image-container.blurred-5 img {
-    filter: blur(2px) brightness(0.9) saturate(1);
+    filter: blur(1px) brightness(0.95) saturate(0.95);
 }
 
 /* CORREÇÃO: Garantir que a imagem revelada não tenha blur */
@@ -460,6 +460,7 @@ header h1 {
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 .give-up-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(245, 101, 101, 0.3);
@@ -609,6 +610,32 @@ footer {
         grid-template-columns: 1fr;
         gap: 10px;
     }
+    
+    /* Ajustes mobile para container de imagem */
+    .image-container {
+        min-height: 180px;
+        max-height: 350px;
+    }
+    
+    .image-container.landscape {
+        height: 220px;
+    }
+    
+    .image-container.portrait {
+        height: 300px;
+    }
+    
+    .image-container.square {
+        height: 250px;
+    }
+    
+    .image-container.wide {
+        height: 200px;
+    }
+    
+    .image-container.tall {
+        height: 320px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -621,7 +648,28 @@ footer {
     }
     
     .image-container {
+        min-height: 150px;
+        max-height: 280px;
+    }
+    
+    .image-container.landscape {
+        height: 180px;
+    }
+    
+    .image-container.portrait {
+        height: 240px;
+    }
+    
+    .image-container.square {
         height: 200px;
+    }
+    
+    .image-container.wide {
+        height: 160px;
+    }
+    
+    .image-container.tall {
+        height: 260px;
     }
     
     .image-reveal-text {
