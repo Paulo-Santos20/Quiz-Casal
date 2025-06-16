@@ -1,185 +1,186 @@
 class DailyChallenge {
     constructor() {
         this.challenges = [
-            {
-                // CARNAVAL - Foto no carnaval com tiara da Marta
-                image: "./img/carnaval.jpg",
+            {                
+            
+                // ANO NOVO 2023 - Eu e Rafhaela no ano novo de 2023
+                image: "./img/ano2023.jpeg",
                 hints: [
-                    "Nesta foto especial, há uma tiara envolvida.",
-                    "Acontece no Brasil antes da quaresma, com música, dança e muita alegria nas ruas.",
-                    "Uma festa colorida e animada onde todo mundo se fantasia e se diverte muito!",
-                    "É a época do ano onde casais se fantasiam juntos e aproveitam os blocos de rua.",
-                    "🎭 A festa mais famosa do Brasil!"
+                    "Uma celebração especial que marca o fim de um ciclo e o início de outro, cheia de esperanças.",
+                    "Foi a primeira vez que este casal passou essa data mágica juntos, criando memórias inesquecíveis.",
+                    "A foto mostra dois apaixonados celebrando a virada, com fogos de artifício ao fundo.",
+                    "Festa em 2023.",
+                    "🎆 Festa após a favorita de momo!"
                 ],
-                answer: ["carnaval", "foto no carnaval"]
+                answer: ["ano novo 2023", "ano novo"]
             },
             {
-                // ANO NOVO 2025 - Foto com Kenai e árvore de natal, barba descolorida
-                image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&h=600&fit=crop",
+                // ANO NOVO 2024 - Eu, Rafhaela e Kenai com árvore de natal
+                image: "./img/ano2024.jpeg",
                 hints: [
-                    "Uma foto muito especial com Kenai participando da celebração.",
-                    "A virada mais recente que este trio viveu juntos, com decoração natalina ao fundo.",
-                    "Paulo estava com um visual bem diferente - barba com uma cor bem inusitada, cor de ovo!",
-                    "🎆 A primeira celebração de 2025!",
-                    "A festa após a data favorita de Rafhaela."
+                    "Uma celebração ainda mais especial, agora com um novo membro da família participando.",
+                    "Kenai, o filho de quatro patas, estava no braço durante esta comemoração .",
+                    "A árvore de Natal ao fundo mostra que foi uma celebração dupla: Natal e ...",
+                    "2024 trouxe muitas alegrias para esta família, e começou com esta foto linda.",
+                    "🎄 A virada para 2024 com o trio completo: papai, mamãe e Kenai!"
                 ],
-                answer: ["ano novo 2025", "foto no ano novo de 2025", "foto ano novo 2025", "ano novo"]
+                answer: ["ano novo 2024", "ano novo"]
             },
             {
-                // JANTAR - Saída com amigos em dezembro 2024
-                image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+                // BK - Primeira vez dela no BK com meus amigos
+                image: "./img/bk.jpeg",
                 hints: [
-                    "Um momento social muito gostoso que aconteceu no último mês de 2024.",
-                    "🍽️ Uma noite de confraternização e boa comida com os amigos queridos!",
-                    "O casal saiu para se divertir e comer algo delicioso com a turma da namorada.",
-                    "Foi uma ocasião especial para conhecer melhor o círculo de amizade de Rafhaela.",
-                    "Comer a noite na cidade vizinha."
+                    "Um momento especial de integração, onde ela conheceu melhor a turma dele.",
+                    "Foi a primeira vez que ela foi neste famoso fast-food com os amigos dele.",
+                    "Uma rede de lanchonetes famosa pelo slogan 'Do seu jeito' e pelo sanduíche Whopper.",
+                    "Momento marcante onde ela se sentiu acolhida pelo grupo de amigos.",
+                    "🍔 A primeira vez dela nesse lugar com a galera!"
                 ],
-                answer: ["jantar", "saida para comer", "saida com amigos"]
+                answer: ["bk", "burger king"]
             },
             {
-                // CINEMA - Vitória Park Shopping, 13 abril 2024
-                image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
+                // CARNAVAL - Com tiara emprestada da Marta
+                image: "./img/carnaval.jpeg",
                 hints: [
-                    "Um passeio em um centro comercial muito conhecido de Vitória.",
-                    "A foto foi tirada perto de plantas, na saída de um local de entretenimento e compras.",
-                    "Foi em abril de 2024, mais precisamente no dia 13.",
-                    "É um dos shoppings mais famosos da região metropolitana.",
-                    "Lugar onde mais costumamos ir e ver um filme!"
+                    "A festa mais colorida e animada do Brasil, onde todo mundo se fantasia.",
+                    "Nesta foto especial, há uma tiara que foi emprestada por Marta.",
+                    "Uma celebração cheia de música, dança e muita alegria nas ruas.",
+                    "O acessório especial na cabeça foi um empréstimo carinhoso da mãe dela.",
+                    "🎭 A festa mais famosa do Brasil, com uma tiara emprestada pela Marta!"
                 ],
-                answer: ["cinema", "vitoria park shopping", "shopping de vitoria"]
+                answer: ["carnaval", "festa de carnaval"]
             },
             {
-                // 1 DE JANEIRO - Família toda, ano novo 2024
-                image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=600&fit=crop",
+                // CINEMA - Foto na parte de fora, lugar que mais saem
+                image: "./img/cinema.jpeg",
                 hints: [
-                    "Uma foto em família muito especial, com todos os parentes reunidos.",
-                    "Dia após a ultima festa do ano.",
-                    "O primeiro dia de um ano que trouxe muitas alegrias para este casal.",
-                    "1º de janeiro de 2024 - um marco de união e acolhimento familiar.",
-                    "👨‍👩‍👧‍👦 O primeiro dia de 2024 registrado com toda a família dela!"
+                    "O local de encontro favorito deste casal apaixonado para seus encontros.",
+                    "A foto foi tirada na parte externa deste lugar de entretenimento.",
+                    "É onde eles mais saem juntos para se divertir e assistir filmes.",
+                    "Um lugar escuro onde as pessoas se sentam para assistir histórias na tela grande.",
+                    "🎬 O programa favorito do casal: sessão de filme no lugar que mais frequentam!"
                 ],
-                answer: ["1 de janeiro", "primeiro dia", "familia", "ano novo 2024", "ano novo"]
+                answer: ["cinema"]
             },
             {
-                // NATAL 2023 - Trio com árvore, 24 dezembro
-                image: "https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=800&h=600&fit=crop",
+                // DANÇANDO - Primeira vez com Marta, Rafhaela passou vergonha
+                image: "./img/dancando.jpeg",
                 hints: [
-                    "A véspera da festa mais especial do ano, celebrada em família.",
-                    "Kenai também participou desta celebração natalina muito especial de 2023.",
-                    "Uma árvore decorada ao fundo emoldurou este momento mágico do trio.",
-                    "24 de dezembro de 2023 - uma data que ficou marcada na memória.",
-                    "🎄 A véspera do Natal de 2023 registrada com muito amor e carinho!"
+                    "Um momento muito especial e marcante: a primeira saída com a sogra.",
+                    "Na foto estão três pessoas: Eu, Rafhaela e Marta se divertindo.",
+                    "Foi a primeira vez que ele saiu com a mãe de Rafhaela para se divertir.",
+                    "Rafhaela ficou com muita vergonha durante esta atividade rítmica.",
+                    "💃 A primeira vez saindo com a sogra Marta, onde todos se movimentaram no ritmo da música!"
                 ],
-                answer: ["natal"]
+                answer: ["dançando", "dança"]
             },
             {
-                // BABY/MOMO - Rafhaela dormindo como princesa
+                // DORMINDO - Rafhaela dormindo
                 image: "./img/dormindo.jpeg",
                 hints: [
-                    "Um momento de pura delicadeza e ternura, capturado em uma foto especial.",
-                    "Ela estava em seu estado mais angelical, parecendo uma verdadeira princesa.",
-                    "Rafhaela em um momento de descanso, irradiando paz e beleza natural.",
-                    "Uma foto que mostra o lado mais doce e sereno da namorada.",
-                    "👑 A princesa Rafhaela fazendo oque mais ama!"
+                    "Um momento de pura tranquilidade e paz, capturado em uma foto especial.",
+                    "Rafhaela em seu estado mais sereno e angelical, descansando.",
+                    "Uma imagem que mostra o lado mais doce e relaxado da namorada.",
+                    "Ela estava em completo repouso, parecendo uma verdadeira princesa.",
+                    "😴 A princesa Rafhaela em seu momento mais angelical de descanso!"
                 ],
-                answer: ["dormindo"]
+                answer: ["dormindo", "sono", "descansando", "momo", "baby"]
             },
             {
-                // NOIVADO - Comemoração 5 agosto 2023
-                image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop",
+                // FORMATURA - Antes da formatura, vestido vermelho, roupa social
+                image: "./img/formatura.jpeg",
                 hints: [
-                    "O dia mais especial na vida deste casal apaixonado, uma celebração única.",
-                    "5 de agosto de 2023 - uma data que mudou para sempre a vida dos dois.",
-                    "A comemoração de um compromisso sério e cheio de amor entre eles.",
-                    "Um momento de muita emoção, alegria e promessas para o futuro.",
-                    "💍 O dia em que eles oficializaram seu amor e compromisso eterno!"
+                    "Um dos dias mais importantes e emocionantes na vida acadêmica dela.",
+                    "Ele estava de roupa social e ela com um vestido vermelho deslumbrante.",
+                    "Foi o dia que ele sentiu um orgulho imenso pela conquista dela.",
+                    "A cerimônia que marca o fim dos estudos e o início da vida profissional.",
+                    "🎓 O dia da conquista acadêmica dela, celebrado com muito orgulho e elegância!"
                 ],
-                answer: ["noivado"]
+                answer: ["formatura", "diploma", "orgulho"]
             },
             {
-                // NATAL 2022 - Casal com Kenai, presentes e árvore
-                image: "https://images.unsplash.com/photo-1576919228236-a097c32a5cd4?w=800&h=600&fit=crop",
-                hints: [
-                    "O primeiro Natal que eles passaram juntos como um casal apaixonado.",
-                    "Kenai também estava presente nesta celebração especial de 2022.",
-                    "Presentes embaixo da árvore decorada completavam o cenário mágico.",
-                    "24 de dezembro de 2022 - uma véspera de Natal inesquecível para o trio.",
-                    "🎁 O primeiro Natal deste casal, celebrado com muito amor e presentes!"
-                ],
-                answer: ["natal", "natal 2022", "casal"]
-            },
-            {
-                // PALHAÇA - Maquiagem da Valentina, 22 outubro 2022
-                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
-                hints: [
-                    "Um momento muito divertido e descontraído, cheio de cores e risadas.",
-                    "22 de outubro de 2022 - um dia de muita diversão e criatividade infantil.",
-                    "Valentina, a sobrinha artista, foi a responsável por esta transformação especial.",
-                    "Rafhaela se deixou ser 'maquiada' e o resultado foi hilário e adorável.",
-                    "🤡 Uma transformação divertida feita pelas mãozinhas carinhosas da sobrinha!"
-                ],
-                answer: ["palhaça", "maquiada"]
-            },
-            {
-                // BUQUÊ - Girassóis aniversário namoro, 17 setembro 2022
-                image: "https://images.unsplash.com/photo-1469259943454-aa100abba749?w=800&h=600&fit=crop",
-                hints: [
-                    "Um presente muito especial para celebrar uma data importante do relacionamento.",
-                    "Girassóis - as flores preferidas dela, escolhidas com muito carinho.",
-                    "17 de setembro de 2022 - aniversário de namoro celebrado com flores.",
-                    "Ela está segurando um buquê lindo, com um sorriso radiante no rosto.",
-                    "🌻 As flores amarelas favoritas dela, recebidas em uma data muito especial!"
-                ],
-                answer: ["buque", "flores"]
-            },
-            {
-                // FORMATURA - Farmácia, vestido vermelho, 8 julho 2022
-                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9d1?w=800&h=600&fit=crop",
-                hints: [
-                    "Um dia de muito orgulho e conquista acadêmica para ela.",
-                    "Rafhaela estava deslumbrante em um vestido vermelho muito elegante.",
-                    "Ele estava de social, todo arrumado para acompanhar este momento especial.",
-                    "8 de julho de 2022 - o dia da formatura em Farmácia dela.",
-                    "🎓 A conquista do diploma em Farmácia, celebrada com muito amor e elegância!"
-                ],
-                answer: ["formatura"]
-            },
-            {
-                // Jantar romântico
+                // JANTAR - Jantar romântico a base de velas, camisa social e bermuda
                 image: "./img/jantar.jpeg",
                 hints: [
-                    "Um dos poucos momentos românticos do casal.",
-                    "Nesse momento ambos estavam comendo e dando as mãos.",
-                    "Momento aconteceu no local que Kenai mais odeia na casa.",
-                    "Momento organizado pelo casal, Paulo estava com camisa social e bermuda kkk.",
-                    "🕯️ Momento à luz de velas!"
+                    "Um momento romântico muito especial, iluminado por velas.",
+                    "Ele estava com uma combinação inusitada: camisa social e bermuda.",
+                    "Foi um encontro gastronômico íntimo e cheio de carinho entre o casal.",
+                    "As velas criaram uma atmosfera perfeita para este momento a dois.",
+                    "🕯️ Um encontro romântico à luz de velas, com um dress code bem descontraído!"
                 ],
-                answer: ["jantar", "jantar romântico", "jantar romantico"]
+                answer: ["jantar", "romântico", "jantar romântico"]
             },
             {
-                // Primeiro encontro
-                image: "./img/primeiro encontro.jpeg",
+                // NATAL 2023 - Data preferida dela, com Kenai e árvore cheia de presentes
+                image: "./img/natal2023.jpeg",
                 hints: [
-                    "Saída onde estavam Rafhaela, Marta e Paulo.",
-                    "Momento em que Paulo e Marta dançaram e Rafhaela ficou morrendo de vergonha.",
-                    "Uma saída de gelar a guela.",
-                    "Primeira foto envolvendo Paulo e Marta.",
-                    "🍻 O primeiro de muitos!"
+                    "A data mais especial e preferida de Rafhaela durante todo o ano.",
+                    "Kenai também participou desta celebração mágica e cheia de presentes.",
+                    "A árvore estava repleta de presentes, criando um cenário perfeito.",
+                    "Uma festa cristã que celebra o nascimento de Jesus, cheia de amor e união.",
+                    "🎄 2 anos atrás."
                 ],
-                answer: ["primeiro encontro"]
+                answer: ["natal 2023", "natal de 2023"]
             },
             {
-                // AMIGOS - Saída Recife, 3 julho 2022
-                image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop",
+                // NOIVADO - Foto do noivado, combinando preto e branco como zebras
+                image: "./img/noivado.jpeg",
                 hints: [
-                    "Um dia especial de confraternização com a turma de amigos dele.",
-                    "Foi também o dia em que ela viajou para uma capital nordestina.",
-                    "3 de julho de 2022 - uma data com programações diferentes para o casal.",
-                    "Vários amigos estavam presentes nesta reunião social divertida.",
-                    "✈️ O dia da viagem dela para Recife e da confraternização com os amigos!"
+                    "O dia mais importante na vida deste casal apaixonado, uma celebração única.",
+                    "Eles estavam combinando as roupas de uma forma muito especial.",
+                    "A combinação de preto e branco os fez parecer duas zebras estilosas.",
+                    "O momento em que eles oficializaram seu compromisso de amor eterno.",
+                    "💍 O dia do compromisso oficial, vestidos como duas zebras elegantes!"
                 ],
-                answer: ["amigos", "saida"]
+                answer: ["noivado", "zebras"]
+            },
+            {
+                // ORGULHO - Segurando diploma, ela de farda e ele de social
+                image: "./img/orgulho.jpeg",
+                hints: [
+                    "Um momento de muito orgulho e conquista, registrado em uma foto especial.",
+                    "Ela estava com a farda da formatura e ele de roupa social elegante.",
+                    "Os dois estão segurando o símbolo máximo da conquista acadêmica dela.",
+                    "O sentimento que ele teve neste dia foi de orgulho imenso pela namorada.",
+                    "🏆 O momento do orgulho máximo, segurando juntos o símbolo da conquista!"
+                ],
+                answer: ["orgulho", "diploma", "conquista"]
+            },
+            {
+                // PALHAÇA - Maquiada por Valentina
+                image: "./img/palhaca.jpeg",
+                hints: [
+                    "Um momento muito divertido e descontraído, cheio de cores e risadas.",
+                    "Valentina, a sobrinha artista, foi a responsável por esta transformação.",
+                    "Rafhaela se deixou ser maquiada e o resultado foi hilário e adorável.",
+                    "Uma personagem circense conhecida por fazer as pessoas rirem.",
+                    "🤡 Uma transformação divertida feita pelas mãozinhas da sobrinha Valentina!"
+                ],
+                answer: ["palhaça", "maquiagem"]
+            },
+            {
+                // BUQUÊ - Girassóis e ursinho, flores que ela mais ama
+                image: "./img/buque.jpeg",
+                hints: [
+                    "Um presente muito especial com as flores favoritas dela.",
+                    "Ela está segurando um buquê e também ganhou um ursinho de pelúcia.",
+                    "As flores amarelas que ela mais ama, que sempre seguem o sol.",
+                    "Girassóis são as flores preferidas dela, símbolo de alegria e energia.",
+                    "🌻 As flores amarelas favoritas dela, acompanhadas de um ursinho fofo!"
+                ],
+                answer: ["buque de girassol", "girassol"]
+            },
+            {
+                // VIAGEM - Primeira viagem com amigos dela para outra cidade
+                image: "./img/viagem.jpeg",
+                hints: [
+                    "A primeira aventura deles para fora da cidade natal.",
+                    "Foi uma experiência especial viajando com os amigos dela.",
+                    "Uma oportunidade de conhecer melhor o círculo de amizades dela.",
+                    "A primeira vez que eles saíram da cidade juntos para se divertir.",
+                    "✈️ A primeira aventura para outra cidade com a turma de amigos dela!"
+                ],
+                answer: ["viagem", "amigos"]
             }
         ];
 
