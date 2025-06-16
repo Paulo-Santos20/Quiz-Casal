@@ -76,7 +76,11 @@ header h1 {
     height: 100%;
     object-fit: cover;
     object-position: center;
+<<<<<<< HEAD
     transition: transform 0.3s ease;
+=======
+    transition: transform 0.3s ease, filter 0.8s ease-in-out;
+>>>>>>> bfc9059b0f197860dcfdac9ef561d9e07b2d0c1d
     display: block;
 }
 
@@ -107,53 +111,124 @@ header h1 {
     transform: scale(1.05);
 }
 
+<<<<<<< HEAD
 /* Sistema de Revelação da Imagem com Blur Intenso */
+=======
+/* Sistema de Revelação da Imagem com Blur Reduzido */
+>>>>>>> bfc9059b0f197860dcfdac9ef561d9e07b2d0c1d
 .image-reveal-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
     transition: all 0.8s ease-in-out;
+<<<<<<< HEAD
     backdrop-filter: blur(25px) saturate(0.5);
 }
 
 /* Estados de revelação baseados no número de dicas com blur progressivo */
+=======
+    backdrop-filter: blur(15px) saturate(0.6);
+}
+
+/* Estados de revelação baseados no número de dicas com blur REDUZIDO */
+>>>>>>> bfc9059b0f197860dcfdac9ef561d9e07b2d0c1d
 .image-reveal-overlay.hints-1 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 75%);
+<<<<<<< HEAD
     backdrop-filter: blur(30px) saturate(0.3);
+=======
+    backdrop-filter: blur(15px) saturate(0.6);
+>>>>>>> bfc9059b0f197860dcfdac9ef561d9e07b2d0c1d
 }
 
 .image-reveal-overlay.hints-2 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+<<<<<<< HEAD
     backdrop-filter: blur(20px) saturate(0.5);
+=======
+    backdrop-filter: blur(10px) saturate(0.7);
+>>>>>>> bfc9059b0f197860dcfdac9ef561d9e07b2d0c1d
 }
 
 .image-reveal-overlay.hints-3 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 25%, 0 25%);
+<<<<<<< HEAD
     backdrop-filter: blur(15px) saturate(0.7);
+=======
+    backdrop-filter: blur(6px) saturate(0.8);
+>>>>>>> bfc9059b0f197860dcfdac9ef561d9e07b2d0c1d
 }
 
 .image-reveal-overlay.hints-4 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
+<<<<<<< HEAD
     backdrop-filter: blur(8px) saturate(0.8);
+=======
+    backdrop-filter: blur(3px) saturate(0.9);
+>>>>>>> bfc9059b0f197860dcfdac9ef561d9e07b2d0c1d
 }
 
 .image-reveal-overlay.hints-5 {
-    background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+<<<<<<< HEAD
     backdrop-filter: blur(3px) saturate(0.9);
+=======
+    backdrop-filter: blur(1px) saturate(0.95);
+>>>>>>> bfc9059b0f197860dcfdac9ef561d9e07b2d0c1d
 }
 
+/* CORREÇÃO: Garantir que overlay revelado não tenha blur */
 .image-reveal-overlay.revealed {
-    background: transparent;
-    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-    backdrop-filter: none;
+    background: transparent !important;
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0) !important;
+    backdrop-filter: none !important;
+    transition: all 0.8s ease-in-out;
+}
+
+/* Blur adicional na própria imagem REDUZIDO */
+.image-container.blurred-1 img {
+    filter: blur(12px) brightness(0.6) saturate(0.6);
+}
+
+.image-container.blurred-2 img {
+    filter: blur(8px) brightness(0.7) saturate(0.7);
+}
+
+.image-container.blurred-3 img {
+    filter: blur(5px) brightness(0.8) saturate(0.8);
+}
+
+.image-container.blurred-4 img {
+    filter: blur(3px) brightness(0.9) saturate(0.9);
+}
+
+.image-container.blurred-5 img {
+    filter: blur(1px) brightness(0.95) saturate(0.95);
+}
+
+/* CORREÇÃO: Garantir que a imagem revelada não tenha blur */
+.image-container.revealed img {
+    filter: none !important;
+    transition: filter 0.8s ease-in-out;
+}
+
+/* Classe adicional para forçar remoção completa do blur */
+.image-container.no-blur img {
+    filter: none !important;
+}
+
+.image-container.no-blur .image-reveal-overlay {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0) !important;
 }
 
 /* Blur adicional na própria imagem para máximo efeito */
@@ -444,8 +519,6 @@ header h1 {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    flex: 1;
-    min-width: 200px;
 }
 
 .give-up-btn:hover {
@@ -818,6 +891,100 @@ footer {
     letter-spacing: 1px;
 }
 
+
+/* Navegação */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0 30px 0;
+}
+
+.nav-btn {
+    padding: 12px 25px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.nav-btn.active {
+    background: rgba(255,255,255,0.4);
+    font-weight: 700;
+}
+
+/* Responsividade para navegação */
+@media (max-width: 480px) {
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .nav-btn {
+        width: 200px;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animação para os botões de navegação */
+@keyframes navButtonPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+}
+
+.nav-btn:focus {
+    animation: navButtonPulse 1.5s infinite;
+    outline: none;
+}
+
+/* Indicador visual para página ativa */
+.nav-btn.active::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #ffd700;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.nav-btn {
+    position: relative;
+}
+
+/* Efeito hover especial */
+.nav-btn:hover:not(.active) {
+    background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.35) 100%);
+}
+
+.nav-btn.active {
+    background: linear-gradient(135deg, rgba(255,215,0,0.3) 0%, rgba(255,255,255,0.4) 100%);
+    border-color: rgba(255,215,0,0.5);
+}
 
 /* Navegação */
 .navigation {
