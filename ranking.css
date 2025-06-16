@@ -1,0 +1,666 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.2);
+    padding: 15px 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    text-align: center;
+    min-width: 120px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffd700;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Navegação */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.nav-btn {
+    padding: 12px 25px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Seção do Jogador */
+.player-section {
+    margin-bottom: 30px;
+}
+
+.player-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.player-card h3 {
+    margin-bottom: 20px;
+    color: #4a5568;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#playerName {
+    padding: 12px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+#playerName:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.save-btn, .change-btn {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover, .change-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.player-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.player-details h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #2d3748;
+}
+
+.player-details p {
+    margin: 2px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Sistema de Pontuação */
+.scoring-system {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.scoring-system h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4a5568;
+}
+
+.scoring-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.score-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.score-item:hover {
+    transform: translateY(-2px);
+}
+
+.score-item.perfect {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #744210;
+}
+
+.score-item.excellent {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5722 100%);
+    color: white;
+}
+
+.score-item.good {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+}
+
+.score-item.regular {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #2d3748;
+}
+
+.score-item.basic {
+    background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+    color: #2d3748;
+}
+
+.score-icon {
+    font-size: 1.5rem;
+}
+
+.score-points {
+    display: block;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.score-desc {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Filtros do Ranking */
+.ranking-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+/* Container do Ranking */
+.ranking-container {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.ranking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.ranking-header h3 {
+    color: #4a5568;
+}
+
+.refresh-btn {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.refresh-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Lista do Ranking */
+.ranking-list {
+    min-height: 200px;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.ranking-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.ranking-item.current-player {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+}
+
+.ranking-item.top-1 {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #744210;
+}
+
+.ranking-item.top-2 {
+    background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
+    color: #2d3748;
+}
+
+.ranking-item.top-3 {
+    background: linear-gradient(135deg, #cd7f32 0%, #daa520 100%);
+    color: white;
+}
+
+.ranking-item.top-other {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    color: #2d3748;
+}
+
+.rank-position {
+    font-size: 1.5rem;
+    font-weight: 700;
+    min-width: 50px;
+    text-align: center;
+}
+
+.rank-medal {
+    font-size: 2rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.player-avatar-small {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    margin: 0 15px;
+}
+
+.player-info-rank {
+    flex: 1;
+    min-width: 150px;
+}
+
+.player-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.player-stats {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.player-score {
+    text-align: right;
+    min-width: 80px;
+}
+
+.score-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.score-games {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* Paginação */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.page-btn {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-info {
+    font-weight: 600;
+    color: #666;
+}
+
+/* Estatísticas Detalhadas */
+.detailed-stats {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.detailed-stats h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4a5568;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat-detail {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    transition: transform 0.2s ease;
+}
+
+.stat-detail:hover {
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    width: 50px;
+    text-align: center;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-title {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: white;
+    opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .header-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .login-form {
+        flex-direction: column;
+    }
+    
+    #playerName {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .player-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .scoring-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ranking-item {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .player-info-rank {
+        min-width: auto;
+        text-align: center;
+    }
+    
+    .player-score {
+        text-align: center;
+        min-width: auto;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .ranking-item {
+        padding: 10px;
+    }
+    
+    .rank-position, .rank-medal {
+        font-size: 1.2rem;
+        min-width: 40px;
+    }
+    
+    .player-avatar-small {
+        width: 35px;
+        height: 35px;
+        margin: 0 10px;
+    }
+    
+    .player-name {
+        font-size: 1rem;
+    }
+    
+    .score-value {
+        font-size: 1.1rem;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.ranking-item {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.score-item {
+    animation: slideIn 0.5s ease-out;
+}
+
+.stat-detail {
+    animation: fadeIn 0.6s ease-out;
+}

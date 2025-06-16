@@ -2,124 +2,184 @@ class DailyChallenge {
     constructor() {
         this.challenges = [
             {
-                // PIZZA - Imagem de pizza deliciosa
-                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop",
+                // CARNAVAL - Foto no carnaval com tiara da Marta
+                image: "./img/carnaval.jpg",
                 hints: [
-                    "É redondo, tem queijo e todo mundo ama. Nasceu na Itália mas conquistou o mundo!",
-                    "Tem massa fina ou grossa, molho de tomate e pode ter vários ingredientes por cima.",
-                    "É assada no forno, cortada em fatias e muito popular nas sextas-feiras.",
-                    "Rima com 'preguiça' e tem origem napolitana. Margherita é um tipo famoso.",
-                    "🍕 Começa com 'P' e termina com 'A'. É o prato italiano mais famoso do mundo!"
+                    "Nesta foto especial, há uma tiara envolvida.",
+                    "Acontece no Brasil antes da quaresma, com música, dança e muita alegria nas ruas.",
+                    "Uma festa colorida e animada onde todo mundo se fantasia e se diverte muito!",
+                    "É a época do ano onde casais se fantasiam juntos e aproveitam os blocos de rua.",
+                    "🎭 A festa mais famosa do Brasil!"
                 ],
-                answer: ["pizza", "piza"]
+                answer: ["carnaval", "foto no carnaval"]
             },
             {
-                // CAFÉ - Xícara de café fumegante
-                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=600&fit=crop",
+                // ANO NOVO 2025 - Foto com Kenai e árvore de natal, barba descolorida
+                image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&h=600&fit=crop",
                 hints: [
-                    "Preto, quente e desperta. É o combustível de muita gente pela manhã!",
-                    "Vem do grão torrado e moído. Pode ser expresso, cappuccino ou americano.",
-                    "Tem cafeína e pode ser bebido com leite, açúcar ou puro.",
-                    "O Brasil é um dos maiores produtores mundiais. Starbucks é uma marca famosa.",
-                    "☕ Rima com 'sofá' e deixa muita gente acordada à noite!"
+                    "Uma foto muito especial com Kenai participando da celebração.",
+                    "A virada mais recente que este trio viveu juntos, com decoração natalina ao fundo.",
+                    "Paulo estava com um visual bem diferente - barba com uma cor bem inusitada, cor de ovo!",
+                    "🎆 A primeira celebração de 2025!",
+                    "A festa após a data favorita de Rafhaela."
                 ],
-                answer: ["café", "cafe"]
+                answer: ["ano novo 2025", "foto no ano novo de 2025", "foto ano novo 2025", "ano novo"]
             },
             {
-                // LIVRO - Livros empilhados
-                image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop",
+                // JANTAR - Saída com amigos em dezembro 2024
+                image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
                 hints: [
-                    "Tem páginas, conta histórias e pode te levar para outros mundos sem sair do lugar.",
-                    "Pode ser de ficção, romance, terror ou educativo. Alguns viram filmes famosos.",
-                    "Tem capa, contracapa e pode ser físico ou digital (e-book).",
-                    "Biblioteca é onde você encontra milhares deles. Harry Potter é uma série famosa.",
-                    "📚 Rima com 'futuro' e você está lendo suas instruções agora mesmo!"
+                    "Um momento social muito gostoso que aconteceu no último mês de 2024.",
+                    "🍽️ Uma noite de confraternização e boa comida com os amigos queridos!",
+                    "O casal saiu para se divertir e comer algo delicioso com a turma da namorada.",
+                    "Foi uma ocasião especial para conhecer melhor o círculo de amizade de Rafhaela.",
+                    "Comer a noite na cidade vizinha."
                 ],
-                answer: ["livro", "libro"]
+                answer: ["jantar", "saida para comer", "saida com amigos"]
             },
             {
-                // CACHORRO - Cachorro fofo
-                image: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&h=600&fit=crop",
+                // CINEMA - Vitória Park Shopping, 13 abril 2024
+                image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
                 hints: [
-                    "Tem quatro patas, late e é o melhor amigo do homem.",
-                    "Pode ser pequeno como um Chihuahua ou grande como um Pastor Alemão. Adora brincar de buscar.",
-                    "Balança o rabo quando está feliz e pode aprender truques como 'senta' e 'fica'.",
-                    "Precisa passear na coleira, come ração e alguns são usados como cães-guia.",
-                    "🐕 Rima com 'socorro' e é o oposto de gato na rivalidade clássica!"
+                    "Um passeio em um centro comercial muito conhecido de Vitória.",
+                    "A foto foi tirada perto de plantas, na saída de um local de entretenimento e compras.",
+                    "Foi em abril de 2024, mais precisamente no dia 13.",
+                    "É um dos shoppings mais famosos da região metropolitana.",
+                    "Lugar onde mais costumamos ir e ver um filme!"
                 ],
-                answer: ["cachorro", "cão", "cao", "dog"]
+                answer: ["cinema", "vitoria park shopping", "shopping de vitoria"]
             },
             {
-                // CÉU - Céu azul com nuvens
-                image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&h=600&fit=crop",
+                // 1 DE JANEIRO - Família toda, ano novo 2024
+                image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=600&fit=crop",
                 hints: [
-                    "Azul, infinito e onde as nuvens passeiam. Olhamos para cima para vê-lo.",
-                    "Muda de cor durante o dia: azul de manhã, laranja no pôr do sol, escuro à noite.",
-                    "Os pássaros voam por ele e os aviões atravessam suas nuvens.",
-                    "Tem estrelas à noite e o sol durante o dia. Pode estar limpo ou nublado.",
-                    "☁️ Rima com 'véu' e é onde fica o arco-íris depois da chuva!"
+                    "Uma foto em família muito especial, com todos os parentes reunidos.",
+                    "Dia após a ultima festa do ano.",
+                    "O primeiro dia de um ano que trouxe muitas alegrias para este casal.",
+                    "1º de janeiro de 2024 - um marco de união e acolhimento familiar.",
+                    "👨‍👩‍👧‍👦 O primeiro dia de 2024 registrado com toda a família dela!"
                 ],
-                answer: ["céu", "ceu", "sky"]
+                answer: ["1 de janeiro", "primeiro dia", "familia", "ano novo 2024", "ano novo"]
             },
             {
-                // SOL - Sol brilhante
-                image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+                // NATAL 2023 - Trio com árvore, 24 dezembro
+                image: "https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=800&h=600&fit=crop",
                 hints: [
-                    "Amarelo, brilhante e nos dá energia. Sem ele, não haveria vida na Terra.",
-                    "Nasce no leste e se põe no oeste. É uma estrela gigante no centro do nosso sistema.",
-                    "Produz luz e calor, causa bronzeado e faz as plantas crescerem.",
-                    "Tem manchas solares e pode causar tempestades magnéticas. É muito maior que a Terra.",
-                    "☀️ Rima com 'gol' e você não deve olhar diretamente para ele!"
+                    "A véspera da festa mais especial do ano, celebrada em família.",
+                    "Kenai também participou desta celebração natalina muito especial de 2023.",
+                    "Uma árvore decorada ao fundo emoldurou este momento mágico do trio.",
+                    "24 de dezembro de 2023 - uma data que ficou marcada na memória.",
+                    "🎄 A véspera do Natal de 2023 registrada com muito amor e carinho!"
                 ],
-                answer: ["sol", "sun"]
+                answer: ["natal"]
             },
             {
-                // ÁGUA - Água cristalina
-                image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
+                // BABY/MOMO - Rafhaela dormindo como princesa
+                image: "./img/dormindo.jpeg",
                 hints: [
-                    "Cristalina, essencial e mata a sede. Cobre a maior parte do nosso planeta.",
-                    "Pode estar nos três estados: líquida, sólida (gelo) ou gasosa (vapor).",
-                    "Precisamos beber pelo menos 2 litros por dia. Forma oceanos, rios e lagos.",
-                    "Ferve a 100°C e congela a 0°C. É formada por hidrogênio e oxigênio (H2O).",
-                    "💧 Rima com 'mágoa' e é essencial para todos os seres vivos!"
+                    "Um momento de pura delicadeza e ternura, capturado em uma foto especial.",
+                    "Ela estava em seu estado mais angelical, parecendo uma verdadeira princesa.",
+                    "Rafhaela em um momento de descanso, irradiando paz e beleza natural.",
+                    "Uma foto que mostra o lado mais doce e sereno da namorada.",
+                    "👑 A princesa Rafhaela fazendo oque mais ama!"
                 ],
-                answer: ["água", "agua", "water"]
+                answer: ["dormindo"]
             },
             {
-                // GATO - Gato fofo (desafio extra)
-                image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&h=600&fit=crop",
+                // NOIVADO - Comemoração 5 agosto 2023
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop",
                 hints: [
-                    "Tem quatro patas, mia e é independente. Dorme muito durante o dia.",
-                    "Tem bigodes, unhas afiadas e adora brincar com novelos de lã.",
-                    "Ronrona quando está feliz e pode ter pelos longos ou curtos.",
-                    "Caça ratos, tem visão noturna excelente e sempre cai em pé.",
-                    "🐱 Rima com 'pato' e é famoso por ter 7 vidas!"
+                    "O dia mais especial na vida deste casal apaixonado, uma celebração única.",
+                    "5 de agosto de 2023 - uma data que mudou para sempre a vida dos dois.",
+                    "A comemoração de um compromisso sério e cheio de amor entre eles.",
+                    "Um momento de muita emoção, alegria e promessas para o futuro.",
+                    "💍 O dia em que eles oficializaram seu amor e compromisso eterno!"
                 ],
-                answer: ["gato", "cat"]
+                answer: ["noivado"]
             },
             {
-                // FLOR - Flores coloridas (desafio extra)
-                image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop",
+                // NATAL 2022 - Casal com Kenai, presentes e árvore
+                image: "https://images.unsplash.com/photo-1576919228236-a097c32a5cd4?w=800&h=600&fit=crop",
                 hints: [
-                    "Colorida, perfumada e cresce no jardim. As abelhas adoram visitá-la!",
-                    "Tem pétalas delicadas e pode ser vermelha, amarela, rosa ou branca.",
-                    "É dada de presente no Dia das Mães e simboliza amor e carinho.",
-                    "Precisa de água, sol e terra para crescer. Rosa é um tipo famoso.",
-                    "🌸 Rima com 'cor' e deixa qualquer ambiente mais bonito!"
+                    "O primeiro Natal que eles passaram juntos como um casal apaixonado.",
+                    "Kenai também estava presente nesta celebração especial de 2022.",
+                    "Presentes embaixo da árvore decorada completavam o cenário mágico.",
+                    "24 de dezembro de 2022 - uma véspera de Natal inesquecível para o trio.",
+                    "🎁 O primeiro Natal deste casal, celebrado com muito amor e presentes!"
                 ],
-                answer: ["flor", "flower"]
+                answer: ["natal", "natal 2022", "casal"]
             },
             {
-                // CARRO - Carro moderno (desafio extra)
-                image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop",
+                // PALHAÇA - Maquiagem da Valentina, 22 outubro 2022
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop",
                 hints: [
-                    "Tem quatro rodas e nos leva de um lugar para outro rapidamente.",
-                    "Precisa de combustível para funcionar e tem volante para dirigir.",
-                    "Pode ser sedan, SUV, hatchback ou conversível. Tem faróis e retrovisores.",
-                    "Precisa de carteira de motorista para dirigir e tem cinto de segurança.",
-                    "🚗 Rima com 'barro' e é o meio de transporte mais comum nas cidades!"
+                    "Um momento muito divertido e descontraído, cheio de cores e risadas.",
+                    "22 de outubro de 2022 - um dia de muita diversão e criatividade infantil.",
+                    "Valentina, a sobrinha artista, foi a responsável por esta transformação especial.",
+                    "Rafhaela se deixou ser 'maquiada' e o resultado foi hilário e adorável.",
+                    "🤡 Uma transformação divertida feita pelas mãozinhas carinhosas da sobrinha!"
                 ],
-                answer: ["carro", "car", "automóvel", "automovel"]
+                answer: ["palhaça", "maquiada"]
+            },
+            {
+                // BUQUÊ - Girassóis aniversário namoro, 17 setembro 2022
+                image: "https://images.unsplash.com/photo-1469259943454-aa100abba749?w=800&h=600&fit=crop",
+                hints: [
+                    "Um presente muito especial para celebrar uma data importante do relacionamento.",
+                    "Girassóis - as flores preferidas dela, escolhidas com muito carinho.",
+                    "17 de setembro de 2022 - aniversário de namoro celebrado com flores.",
+                    "Ela está segurando um buquê lindo, com um sorriso radiante no rosto.",
+                    "🌻 As flores amarelas favoritas dela, recebidas em uma data muito especial!"
+                ],
+                answer: ["buque", "flores"]
+            },
+            {
+                // FORMATURA - Farmácia, vestido vermelho, 8 julho 2022
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9d1?w=800&h=600&fit=crop",
+                hints: [
+                    "Um dia de muito orgulho e conquista acadêmica para ela.",
+                    "Rafhaela estava deslumbrante em um vestido vermelho muito elegante.",
+                    "Ele estava de social, todo arrumado para acompanhar este momento especial.",
+                    "8 de julho de 2022 - o dia da formatura em Farmácia dela.",
+                    "🎓 A conquista do diploma em Farmácia, celebrada com muito amor e elegância!"
+                ],
+                answer: ["formatura"]
+            },
+            {
+                // Jantar romântico
+                image: "./img/jantar.jpeg",
+                hints: [
+                    "Um dos poucos momentos românticos do casal.",
+                    "Nesse momento ambos estavam comendo e dando as mãos.",
+                    "Momento aconteceu no local que Kenai mais odeia na casa.",
+                    "Momento organizado pelo casal, Paulo estava com camisa social e bermuda kkk.",
+                    "🕯️ Momento à luz de velas!"
+                ],
+                answer: ["jantar", "jantar romântico", "jantar romantico"]
+            },
+            {
+                // Primeiro encontro
+                image: "./img/primeiro encontro.jpeg",
+                hints: [
+                    "Saída onde estavam Rafhaela, Marta e Paulo.",
+                    "Momento em que Paulo e Marta dançaram e Rafhaela ficou morrendo de vergonha.",
+                    "Uma saída de gelar a guela.",
+                    "Primeira foto envolvendo Paulo e Marta.",
+                    "🍻 O primeiro de muitos!"
+                ],
+                answer: ["primeiro encontro"]
+            },
+            {
+                // AMIGOS - Saída Recife, 3 julho 2022
+                image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop",
+                hints: [
+                    "Um dia especial de confraternização com a turma de amigos dele.",
+                    "Foi também o dia em que ela viajou para uma capital nordestina.",
+                    "3 de julho de 2022 - uma data com programações diferentes para o casal.",
+                    "Vários amigos estavam presentes nesta reunião social divertida.",
+                    "✈️ O dia da viagem dela para Recife e da confraternização com os amigos!"
+                ],
+                answer: ["amigos", "saida"]
             }
         ];
 
@@ -172,7 +232,43 @@ class DailyChallenge {
         this.currentChallenge = this.challenges[challengeIndex];
 
         document.getElementById('challengeNumber').textContent = `Desafio #${dayOfYear}`;
-        document.getElementById('challengeImage').src = this.currentChallenge.image;
+        
+        // Carregar imagem com tratamento de erro
+        const challengeImage = document.getElementById('challengeImage');
+        const imageContainer = document.querySelector('.image-container');
+        
+        challengeImage.src = this.currentChallenge.image;
+        
+        // Detectar orientação da imagem quando carregar
+        challengeImage.onload = () => {
+            const aspectRatio = challengeImage.naturalWidth / challengeImage.naturalHeight;
+            
+            // Remover classes anteriores
+            imageContainer.classList.remove('landscape', 'portrait', 'square', 'wide', 'tall');
+            
+            // Adicionar classe baseada na orientação
+            if (aspectRatio > 1.5) {
+                imageContainer.classList.add('wide');
+            } else if (aspectRatio > 1.2) {
+                imageContainer.classList.add('landscape');
+            } else if (aspectRatio > 0.8) {
+                imageContainer.classList.add('square');
+            } else if (aspectRatio > 0.6) {
+                imageContainer.classList.add('portrait');
+            } else {
+                imageContainer.classList.add('tall');
+            }
+            
+            console.log(`📐 Imagem carregada - Proporção: ${aspectRatio.toFixed(2)}`);
+        };
+        
+        // Tratamento de erro para imagens não encontradas
+        challengeImage.onerror = () => {
+            console.warn(`⚠️ Imagem não encontrada: ${this.currentChallenge.image}`);
+            challengeImage.src = './img/placeholder.jpg';
+            challengeImage.alt = 'Imagem não disponível';
+            imageContainer.classList.add('square');
+        };
 
         this.showFirstHint();
         this.updateImageReveal();
@@ -213,7 +309,6 @@ class DailyChallenge {
         }
     }
 
-
     updateImageReveal() {
         const imageOverlay = document.getElementById('imageOverlay');
         const revealPercentage = document.getElementById('revealPercentage');
@@ -222,12 +317,15 @@ class DailyChallenge {
         const hintsShown = this.currentHintIndex + 1;
         const percentage = Math.min(hintsShown * 25, 100);
 
+        // Remover classes anteriores
+        imageContainer.classList.remove('blurred-1', 'blurred-2', 'blurred-3', 'blurred-4', 'blurred-5', 'revealed', 'no-blur');
+        
         // Atualizar classe do overlay
         imageOverlay.className = `image-reveal-overlay hints-${hintsShown}`;
-
+        
         // Atualizar classe do container da imagem para blur
-        imageContainer.className = `image-container blurred-${hintsShown}`;
-
+        imageContainer.classList.add(`blurred-${hintsShown}`);
+        
         // Atualizar texto da porcentagem
         revealPercentage.textContent = `${percentage}%`;
 
@@ -239,11 +337,17 @@ class DailyChallenge {
         const revealPercentage = document.getElementById('revealPercentage');
         const imageContainer = document.querySelector('.image-container');
 
+        // Remover todas as classes de blur
+        imageContainer.classList.remove('blurred-1', 'blurred-2', 'blurred-3', 'blurred-4', 'blurred-5');
+        
+        // Adicionar classes de revelação completa
         imageOverlay.className = 'image-reveal-overlay revealed';
-        imageContainer.className = 'image-container revealed';
+        imageContainer.classList.add('revealed', 'no-blur');
+        
+        // Atualizar texto da porcentagem
         revealPercentage.textContent = '100%';
 
-        console.log('🖼️ Imagem 100% revelada!');
+        console.log('🖼️ Imagem 100% revelada - Blur removido!');
     }
 
     updateProgress() {
@@ -322,9 +426,10 @@ class DailyChallenge {
         if (isCorrect) {
             this.revealFullImage();
 
+            // Mostrar a resposta que o usuário digitou
             resultDiv.innerHTML = `
                 🎉 <strong>Parabéns!</strong> Você acertou!<br>
-                Resposta: <strong>${this.currentChallenge.answer[0].toUpperCase()}</strong><br>
+                Resposta: <strong>${userAnswer.toUpperCase()}</strong><br>
                 Tentativas: <strong>${this.attempts}</strong> | Dicas usadas: <strong>${this.currentHintIndex + 1}</strong>
             `;
             resultDiv.className = 'result correct';
@@ -338,6 +443,11 @@ class DailyChallenge {
             }));
 
             this.finishGame();
+            
+            // Enviar pontuação para o ranking
+            if (typeof window.addGameScore === 'function') {
+                window.addGameScore(this.currentHintIndex + 1);
+            }
         } else {
             if (this.currentHintIndex < this.maxHints - 1) {
                 this.addNewHint();
@@ -386,10 +496,16 @@ class DailyChallenge {
             correct: false,
             gaveUp: true,
             attempts: this.attempts || 1,
-            hintsUsed: this.maxHints
+            hintsUsed: this.maxHints,
+            correctAnswer: this.currentChallenge.answer[0]
         }));
 
         this.finishGame();
+        
+        // Registrar falha no ranking
+        if (typeof window.addGameFailure === 'function') {
+            window.addGameFailure();
+        }
     }
 
     finishGame() {
@@ -430,9 +546,10 @@ class DailyChallenge {
             `;
             resultDiv.className = 'result correct';
         } else if (result.gaveUp) {
+            const correctAnswer = result.correctAnswer || this.currentChallenge.answer[0];
             resultDiv.innerHTML = `
                 📝 <strong>Você desistiu hoje!</strong><br>
-                A resposta era: <strong>${this.currentChallenge.answer[0].toUpperCase()}</strong><br>
+                A resposta era: <strong>${correctAnswer.toUpperCase()}</strong><br>
                 Tentativas: <strong>${result.attempts}</strong> | Dicas usadas: <strong>${result.hintsUsed}</strong><br>
                 Tente novamente amanhã! 💪
             `;

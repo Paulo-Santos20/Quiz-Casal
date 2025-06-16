@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Ranking - Desafio Diário</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ranking.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏆 Ranking Global</h1>
+            <p class="subtitle">Os melhores jogadores do Desafio Diário</p>
+            <div class="header-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalPlayers">0</span>
+                    <span class="stat-label">Jogadores</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalGames">0</span>
+                    <span class="stat-label">Partidas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="avgScore">0</span>
+                    <span class="stat-label">Média</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navigation">
+            <a href="index.html" class="nav-btn">
+                🎯 Jogar
+            </a>
+            <a href="ranking.html" class="nav-btn active">
+                🏆 Ranking
+            </a>
+        </nav>
+
+        <!-- Seção de Cadastro/Login -->
+        <div class="player-section" id="playerSection">
+            <div class="player-card">
+                <h3>👤 Seu Perfil</h3>
+                <div id="loginForm" class="login-form">
+                    <input type="text" id="playerName" placeholder="Digite seu nome" maxlength="20">
+                    <button id="savePlayerBtn" class="save-btn">💾 Salvar Nome</button>
+                </div>
+                <div id="playerInfo" class="player-info" style="display: none;">
+                    <div class="player-avatar">
+                        <span id="playerInitial">?</span>
+                    </div>
+                    <div class="player-details">
+                        <h4 id="currentPlayerName">Jogador</h4>
+                        <p>Posição: <span id="playerRank">#-</span></p>
+                        <p>Pontos: <span id="playerPoints">0</span></p>
+                        <p>Partidas: <span id="playerGames">0</span></p>
+                    </div>
+                    <button id="changeNameBtn" class="change-btn">✏️ Alterar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sistema de Pontuação -->
+        <div class="scoring-system">
+            <h3>📊 Sistema de Pontuação</h3>
+            <div class="scoring-grid">
+                <div class="score-item perfect">
+                    <div class="score-icon">🎯</div>
+                    <div class="score-info">
+                        <span class="score-points">5 pontos</span>
+                        <span class="score-desc">1ª dica (Perfeito)</span>
+                    </div>
+                </div>
+                <div class="score-item excellent">
+                    <div class="score-icon">🔥</div>
+                    <div class="score-info">
+                        <span class="score-points">4 pontos</span>
+                        <span class="score-desc">2ª dica (Excelente)</span>
+                    </div>
+                </div>
+                <div class="score-item good">
+                    <div class="score-icon">👍</div>
+                    <div class="score-info">
+                        <span class="score-points">3 pontos</span>
+                        <span class="score-desc">3ª dica (Bom)</span>
+                    </div>
+                </div>
+                <div class="score-item regular">
+                    <div class="score-icon">👌</div>
+                    <div class="score-info">
+                        <span class="score-points">2 pontos</span>
+                        <span class="score-desc">4ª dica (Regular)</span>
+                    </div>
+                </div>
+                <div class="score-item basic">
+                    <div class="score-icon">💪</div>
+                    <div class="score-info">
+                        <span class="score-points">1 ponto</span>
+                        <span class="score-desc">5ª dica (Básico)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtros do Ranking -->
+        <div class="ranking-filters">
+            <button class="filter-btn active" data-filter="total">🏆 Total</button>
+            <button class="filter-btn" data-filter="weekly">📅 Semanal</button>
+            <button class="filter-btn" data-filter="monthly">📊 Mensal</button>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loadingRanking">
+            <div class="spinner"></div>
+            <p>Carregando ranking...</p>
+        </div>
+
+        <!-- Lista do Ranking -->
+        <div class="ranking-container">
+            <div class="ranking-header">
+                <h3>🏅 Top Jogadores</h3>
+                <button id="refreshBtn" class="refresh-btn">🔄 Atualizar</button>
+            </div>
+            
+            <div class="ranking-list" id="rankingList">
+                <!-- Rankings serão inseridos aqui via JavaScript -->
+            </div>
+
+            <!-- Paginação -->
+            <div class="pagination" id="pagination">
+                <button class="page-btn" id="prevPage">← Anterior</button>
+                <span class="page-info" id="pageInfo">Página 1 de 1</span>
+                <button class="page-btn" id="nextPage">Próxima →</button>
+            </div>
+        </div>
+
+        <!-- Seção de Estatísticas Detalhadas -->
+        <div class="detailed-stats">
+            <h3>📈 Estatísticas Detalhadas</h3>
+            <div class="stats-grid">
+                <div class="stat-detail">
+                    <span class="stat-icon">🎯</span>
+                    <div class="stat-content">
+                        <span class="stat-title">Acertos Perfeitos</span>
+                        <span class="stat-value" id="perfectHits">0</span>
+                    </div>
+                </div>
+                <div class="stat-detail">
+                    <span class="stat-icon">⚡</span>
+                    <div class="stat-content">
+                        <span class="stat-title">Sequência Atual</span>
+                        <span class="stat-value" id="currentStreak">0</span>
+                    </div>
+                </div>
+                <div class="stat-detail">
+                    <span class="stat-icon">🔥</span>
+                    <div class="stat-content">
+                        <span class="stat-title">Melhor Sequência</span>
+                        <span class="stat-value" id="bestStreak">0</span>
+                    </div>
+                </div>
+                <div class="stat-detail">
+                    <span class="stat-icon">📊</span>
+                    <div class="stat-content">
+                        <span class="stat-title">Taxa de Acerto</span>
+                        <span class="stat-value" id="winRate">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>💕 Feito com amor para Rafhaela</p>
+    </footer>
+
+    <script src="ranking.js"></script>
+</body>
+</html>

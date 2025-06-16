@@ -58,25 +58,56 @@ header h1 {
     transform: translateY(-5px);
 }
 
+/* Container de imagem responsivo */
 .image-container {
     position: relative;
-    height: 300px;
+    width: 100%;
+    min-height: 200px;
+    max-height: 500px;
     overflow: hidden;
     background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 0.3s ease;
+    display: block;
+}
+
+/* Ajuste automático baseado na orientação da imagem */
+.image-container.landscape {
+    height: 300px;
+}
+
+.image-container.portrait {
+    height: 400px;
+}
+
+.image-container.square {
+    height: 350px;
+}
+
+/* Para imagens muito largas */
+.image-container.wide {
+    height: 250px;
+}
+
+/* Para imagens muito altas */
+.image-container.tall {
+    height: 450px;
 }
 
 .image-container:hover img {
     transform: scale(1.05);
 }
 
-/* Sistema de Revelação da Imagem */
+/* Sistema de Revelação da Imagem com Blur Intenso */
 .image-reveal-overlay {
     position: absolute;
     top: 0;
@@ -85,39 +116,69 @@ header h1 {
     bottom: 0;
     background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
     transition: all 0.8s ease-in-out;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(25px) saturate(0.5);
 }
 
-/* Estados de revelação baseados no número de dicas */
+/* Estados de revelação baseados no número de dicas com blur progressivo */
 .image-reveal-overlay.hints-1 {
     background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 75%);
+    backdrop-filter: blur(30px) saturate(0.3);
 }
 
 .image-reveal-overlay.hints-2 {
     background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    backdrop-filter: blur(20px) saturate(0.5);
 }
 
 .image-reveal-overlay.hints-3 {
     background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 25%, 0 25%);
+    backdrop-filter: blur(15px) saturate(0.7);
 }
 
 .image-reveal-overlay.hints-4 {
     background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
+    backdrop-filter: blur(8px) saturate(0.8);
 }
 
 .image-reveal-overlay.hints-5 {
     background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    backdrop-filter: blur(3px) saturate(0.9);
 }
 
 .image-reveal-overlay.revealed {
     background: transparent;
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     backdrop-filter: none;
+}
+
+/* Blur adicional na própria imagem para máximo efeito */
+.image-container.blurred-1 img {
+    filter: blur(25px) brightness(0.4) saturate(0.3);
+}
+
+.image-container.blurred-2 img {
+    filter: blur(18px) brightness(0.5) saturate(0.5);
+}
+
+.image-container.blurred-3 img {
+    filter: blur(12px) brightness(0.6) saturate(0.7);
+}
+
+.image-container.blurred-4 img {
+    filter: blur(6px) brightness(0.8) saturate(0.9);
+}
+
+.image-container.blurred-5 img {
+    filter: blur(2px) brightness(0.9) saturate(1);
+}
+
+.image-container.revealed img {
+    filter: none;
 }
 
 /* Texto da porcentagem no canto superior esquerdo */
@@ -536,6 +597,32 @@ footer {
         grid-template-columns: 1fr;
         gap: 10px;
     }
+    
+    /* Ajustes mobile para container de imagem */
+    .image-container {
+        min-height: 180px;
+        max-height: 350px;
+    }
+    
+    .image-container.landscape {
+        height: 220px;
+    }
+    
+    .image-container.portrait {
+        height: 300px;
+    }
+    
+    .image-container.square {
+        height: 250px;
+    }
+    
+    .image-container.wide {
+        height: 200px;
+    }
+    
+    .image-container.tall {
+        height: 320px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -548,7 +635,28 @@ footer {
     }
     
     .image-container {
+        min-height: 150px;
+        max-height: 280px;
+    }
+    
+    .image-container.landscape {
+        height: 180px;
+    }
+    
+    .image-container.portrait {
+        height: 240px;
+    }
+    
+    .image-container.square {
         height: 200px;
+    }
+    
+    .image-container.wide {
+        height: 160px;
+    }
+    
+    .image-container.tall {
+        height: 260px;
     }
     
     .image-reveal-text {
@@ -708,4 +816,99 @@ footer {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+
+/* Navegação */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0 30px 0;
+}
+
+.nav-btn {
+    padding: 12px 25px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.nav-btn.active {
+    background: rgba(255,255,255,0.4);
+    font-weight: 700;
+}
+
+/* Responsividade para navegação */
+@media (max-width: 480px) {
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .nav-btn {
+        width: 200px;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animação para os botões de navegação */
+@keyframes navButtonPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+}
+
+.nav-btn:focus {
+    animation: navButtonPulse 1.5s infinite;
+    outline: none;
+}
+
+/* Indicador visual para página ativa */
+.nav-btn.active::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #ffd700;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.nav-btn {
+    position: relative;
+}
+
+/* Efeito hover especial */
+.nav-btn:hover:not(.active) {
+    background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.35) 100%);
+}
+
+.nav-btn.active {
+    background: linear-gradient(135deg, rgba(255,215,0,0.3) 0%, rgba(255,255,255,0.4) 100%);
+    border-color: rgba(255,215,0,0.5);
 }
