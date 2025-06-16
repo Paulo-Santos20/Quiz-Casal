@@ -664,3 +664,219 @@ footer {
 .stat-detail {
     animation: fadeIn 0.6s ease-out;
 }
+
+/* Header Stats - Versão Responsiva Melhorada */
+.header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.2);
+    padding: 15px 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    text-align: center;
+    min-width: 120px;
+    flex: 1;
+    max-width: 200px;
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.25);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+}
+
+/* Responsividade Melhorada */
+@media (max-width: 768px) {
+    .header-stats {
+        gap: 15px;
+        margin: 0 -10px 20px -10px;
+        padding: 0 10px;
+    }
+    
+    .stat-card {
+        flex: 1;
+        min-width: 100px;
+        max-width: none;
+        padding: 12px 15px;
+        margin: 0;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+        letter-spacing: 0.3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 10px;
+    }
+    
+    .header-stats {
+        gap: 8px;
+        margin: 0 -5px 20px -5px;
+        padding: 0 5px;
+    }
+    
+    .stat-card {
+        flex: 1;
+        min-width: 0;
+        padding: 10px 8px;
+        border-radius: 12px;
+    }
+    
+    .stat-number {
+        font-size: 1.4rem;
+        line-height: 1.2;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.2px;
+        margin-top: 3px;
+        line-height: 1.2;
+    }
+}
+
+/* Para telas muito pequenas (menos de 360px) */
+@media (max-width: 360px) {
+    .header-stats {
+        gap: 5px;
+        margin: 0 0 15px 0;
+    }
+    
+    .stat-card {
+        padding: 8px 5px;
+        border-radius: 10px;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.1px;
+    }
+}
+
+/* Melhorar legibilidade em telas pequenas */
+@media (max-width: 480px) {
+    .stat-card {
+        background: rgba(255,255,255,0.25);
+        border: 1px solid rgba(255,255,255,0.4);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .stat-number {
+        color: #ffed4e;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .stat-label {
+        color: rgba(255,255,255,0.95);
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        font-weight: 600;
+    }
+}
+
+/* Animação suave para mudanças */
+.stat-card, .stat-number, .stat-label {
+    transition: all 0.3s ease;
+}
+
+/* Layout em grid para garantir distribuição uniforme */
+@media (max-width: 768px) {
+    .header-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+    }
+}
+
+/* Garantir que o texto não quebre */
+.stat-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Versões curtas dos labels para mobile */
+@media (max-width: 480px) {
+    .stat-card:nth-child(1) .stat-label::after {
+        content: "Jogadores";
+    }
+    
+    .stat-card:nth-child(2) .stat-label::after {
+        content: "Partidas";
+    }
+    
+    .stat-card:nth-child(3) .stat-label::after {
+        content: "Média";
+    }
+    
+    .stat-card .stat-label {
+        font-size: 0;
+    }
+    
+    .stat-card .stat-label::after {
+        font-size: 0.7rem;
+        letter-spacing: 0.2px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+}
+
+/* Para telas muito pequenas, usar abreviações */
+@media (max-width: 360px) {
+    .stat-card:nth-child(1) .stat-label::after {
+        content: "Players";
+    }
+    
+    .stat-card:nth-child(2) .stat-label::after {
+        content: "Games";
+    }
+    
+    .stat-card:nth-child(3) .stat-label::after {
+        content: "Avg";
+    }
+    
+    .stat-card .stat-label::after {
+        font-size: 0.65rem;
+    }
+}
