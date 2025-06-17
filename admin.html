@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Quiz Amore Mio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Supabase SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>    
+       <link rel="stylesheet" href="admin.css">
+
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Navegação -->
+        <nav class="navigation">
+            <a href="index.html" class="nav-btn">🎯 Jogar</a>
+            <a href="ranking.html" class="nav-btn">🏆 Ranking</a>
+            <a href="admin.html" class="nav-btn active">🔧 Admin</a>
+        </nav>
+
+        <!-- Header -->
+        <header class="admin-header">
+            <h1>🔧 Painel Administrativo</h1>
+            <p>Gerencie usuários e configurações do Quiz Amore Mio</p>
+        </header>
+
+        <!-- Grid Principal -->
+        <div class="admin-grid">
+            <!-- Painel de Usuários -->
+            <div class="admin-panel">
+                <div class="panel-header">
+                    <h2>👥 Gerenciar Usuários</h2>
+                    <p>Selecione e administre jogadores</p>
+                </div>
+                <div class="panel-content">
+                    <!-- Seletor de Usuário -->
+                    <div class="user-selector">
+                        <label for="userSelect">Selecionar Usuário:</label>
+                        <div class="selector-group">
+                            <select id="userSelect">
+                                <option value="">Carregando usuários...</option>
+                            </select>
+                            <button class="refresh-btn">🔄</button>
+                        </div>
+                    </div>
+
+                    <!-- Informações do Usuário -->
+                    <div id="selectedUserInfo" class="user-info">
+                        <div class="user-detail">
+                            <strong>Nome:</strong>
+                            <span id="selectedUserName">-</span>
+                        </div>
+                        <div class="user-detail">
+                            <strong>ID:</strong>
+                            <span id="selectedUserId">-</span>
+                        </div>
+                        <div class="user-detail">
+                            <strong>Pontuação:</strong>
+                            <span id="selectedUserScore">-</span>
+                        </div>
+                        <div class="user-detail">
+                            <strong>Jogos:</strong>
+                            <span id="selectedUserGames">-</span>
+                        </div>
+                        <div class="user-detail">
+                            <strong>Sequência:</strong>
+                            <span id="selectedUserStreak">-</span>
+                        </div>
+                        <div class="user-detail">
+                            <strong>Última Jogada:</strong>
+                            <span id="selectedUserLastPlayed">-</span>
+                        </div>
+                        <div class="user-detail">
+                            <strong>Status:</strong>
+                            <span id="selectedUserStatus">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Ações Administrativas -->
+                    <div id="adminActions" class="admin-actions">
+                        <div class="action-grid">
+                            <button class="admin-btn btn-reset-day" data-action="resetDay">
+                                🔄 Resetar Dia
+                                <small>Permite jogar novamente hoje</small>
+                            </button>
+                            
+                            <button class="admin-btn btn-reset-streak" data-action="resetStreak">
+                                🔥 Resetar Sequência
+                                <small>Zera sequência atual</small>
+                            </button>
+                            
+                            <button class="admin-btn btn-bonus-points" data-action="bonusPoints">
+                                ⭐ Adicionar Pontos
+                                <small>Dar pontos extras</small>
+                            </button>
+                            
+                            <button class="admin-btn btn-reset-stats" data-action="resetStats">
+                                📊 Resetar Stats
+                                <small>Zera estatísticas</small>
+                            </button>
+                            
+                            <button class="admin-btn btn-delete-user" data-action="deleteUser">
+                                💀 Deletar Usuário
+                                <small>Remove completamente (irreversível)</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Painel de Ferramentas -->
+            <div class="admin-panel">
+                <div class="panel-header">
+                    <h2>🛠️ Ferramentas do Sistema</h2>
+                    <p>Utilitários e configurações gerais</p>
+                </div>
+                <div class="panel-content">
+                    <!-- Estatísticas Gerais -->
+                    <div class="stats-overview">
+                        <h3 style="margin-bottom: 15px; color: #2d3748;">📊 Estatísticas Gerais</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-number" id="totalUsers">0</span>
+                                <span class="stat-label">Usuários</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="totalGames">0</span>
+                                <span class="stat-label">Jogos</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="avgScore">0</span>
+                                <span class="stat-label">Média</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="activeToday">0</span>
+                                <span class="stat-label">Hoje</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ferramentas -->
+                    <div class="tools-section">
+                        <h3>🔧 Ferramentas</h3>
+                        <div class="tools-grid">
+                            <button class="admin-btn btn-info" data-tool="showData">
+                                📋 Ver Dados Locais
+                                <small>Mostrar localStorage</small>
+                            </button>
+                            
+                            <button class="admin-btn btn-export" data-tool="exportData">
+                                💾 Exportar Dados
+                                <small>Backup completo</small>
+                            </button>
+                            
+                            <button class="admin-btn btn-danger" data-tool="clearLocal">
+                                🧹 Limpar Tudo Local
+                                <small>Reset completo</small>
+                            </button>
+                            
+                            <button class="admin-btn btn-danger" data-tool="resetSupabase">
+                                ☁️ Reset Supabase
+                                <small>Limpar banco online</small>
+                            </button>
+                            
+                            <button class="admin-btn btn-info" data-tool="syncData">
+                                🔄 Sincronizar
+                                <small>Atualizar dados</small>
+                            </button>
+                            
+                            <button class="admin-btn btn-backup" data-tool="newChallenge">
+                                🎯 Novo Desafio
+                                <small>Forçar próximo desafio</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logs do Sistema -->
+        <div class="admin-panel">
+            <div class="panel-header">
+                <h2>📝 Logs do Sistema</h2>
+                <p>Histórico de ações e eventos</p>
+            </div>
+            <div class="panel-content">
+                <div id="systemLogs" class="logs-section">
+                    <div class="log-entry">
+                        <span class="log-time">[--:--:--]</span>
+                        <span class="log-info">Sistema inicializado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="supabase-config.js"></script>
+    <script src="ranking-supabase.js"></script>
+    
+    <script>
+        // ===== SISTEMA DE ADMINISTRAÇÃO =====
+        let selectedUser = null;
+        let allUsers = [];
+
+        // ===== SISTEMA DE LOGS =====
+        function log(message, type = 'info') {
+            const logsContainer = document.getElementById('systemLogs');
+            const time = new Date().toLocaleTimeString('pt-BR');
+            
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.innerHTML = '<span class="log-time">[' + time + ']</span><span class="log-' + type + '">' + message + '</span>';
+            
+            logsContainer.insertBefore(logEntry, logsContainer.firstChild);
+            
+            // Manter apenas os últimos 50 logs
+            const logs = logsContainer.querySelectorAll('.log-entry');
+            if (logs.length > 50) {
+                logs[logs.length - 1].remove();
+            }
+        }
+
+        // ===== SISTEMA DE NOTIFICAÇÕES =====
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = 'notification ' + type;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(function() {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 4000);
+        }
+
+        // ===== GERENCIAMENTO DE USUÁRIOS =====
+        async function refreshUserList() {
+            const userSelect = document.getElementById('userSelect');
+            userSelect.innerHTML = '<option value="">Carregando usuários...</option>';
+            
+            try {
+                log('Atualizando lista de usuários...', 'info');
+                
+                // Carregar usuários do Supabase
+                if (window.loadOnlineRankings) {
+                    allUsers = await window.loadOnlineRankings();
+                } else {
+                    allUsers = [];
+                }
+                
+                // Adicionar usuário atual se não estiver na lista
+                const currentPlayer = window.getCurrentPlayer ? window.getCurrentPlayer() : null;
+                if (currentPlayer && !allUsers.find(function(u) { return u.id === currentPlayer.id; })) {
+                    allUsers.unshift(currentPlayer);
+                }
+                
+                // Popular select
+                userSelect.innerHTML = '<option value="">Selecione um usuário...</option>';
+                
+                allUsers.forEach(function(user) {
+                    const option = document.createElement('option');
+                    option.value = user.id;
+                    const status = checkUserDayStatus(user);
+                    option.textContent = user.name + ' (' + (user.total_score || 0) + ' pts) - ' + status.text;
+                    userSelect.appendChild(option);
+                });
+                
+                log(allUsers.length + ' usuários carregados', 'success');
+                
+            } catch (error) {
+                log('Erro ao carregar usuários: ' + error.message, 'error');
+                userSelect.innerHTML = '<option value="">Erro ao carregar usuários</option>';
+            }
+        }
+
+        function loadSelectedUser() {
+            const userSelect = document.getElementById('userSelect');
+            const userId = userSelect.value;
+            
+            if (!userId) {
+                document.getElementById('selectedUserInfo').classList.remove('show');
+                document.getElementById('adminActions').classList.remove('show');
+                selectedUser = null;
+                return;
+            }
+            
+            // Encontrar usuário
+            selectedUser = allUsers.find(function(u) { return u.id == userId; });
+            
+            if (!selectedUser) {
+                showNotification('❌ Usuário não encontrado!', 'error');
+                return;
+            }
+            
+            // Mostrar informações
+            document.getElementById('selectedUserName').textContent = selectedUser.name;
+            document.getElementById('selectedUserId').textContent = selectedUser.id;
+            document.getElementById('selectedUserScore').textContent = selectedUser.total_score || 0;
+            document.getElementById('selectedUserGames').textContent = selectedUser.total_games || 0;
+            document.getElementById('selectedUserStreak').textContent = (selectedUser.current_streak || 0) + ' (melhor: ' + (selectedUser.best_streak || 0) + ')';
+            
+            const lastPlayed = selectedUser.last_played ? 
+                new Date(selectedUser.last_played).toLocaleString('pt-BR') : 'Nunca';
+            document.getElementById('selectedUserLastPlayed').textContent = lastPlayed;
+            
+            // Verificar status do dia
+            const status = checkUserDayStatus(selectedUser);
+            const statusElement = document.getElementById('selectedUserStatus');
+            statusElement.textContent = status.text;
+            statusElement.className = status.class;
+            
+            // Mostrar seções
+            document.getElementById('selectedUserInfo').classList.add('show');
+            document.getElementById('adminActions').classList.add('show');
+            
+            log('Usuário selecionado: ' + selectedUser.name, 'info');
+        }
+
+        function checkUserDayStatus(user) {
+            const today = new Date().toDateString();
+            
+            if (!user.last_played) {
+                return { text: 'Nunca jogou', class: 'status-unknown' };
+            }
+            
+            const lastPlayedDate = new Date(user.last_played).toDateString();
+            
+            if (lastPlayedDate === today) {
+                return { text: 'Já jogou hoje', class: 'status-played-today' };
+            } else {
+                return { text: 'Pode jogar hoje', class: 'status-can-play' };
+            }
+        }
+
+        // ===== AÇÕES ADMINISTRATIVAS =====
+        const AdminActions = {
+            resetDay: function() {
+                if (!selectedUser) {
+                    showNotification('❌ Nenhum usuário selecionado!', 'error');
+                    return;
+                }
+                
+                const confirmMsg = '🔄 Resetar o dia para ' + selectedUser.name + '?\n\nIsso permitirá que ele jogue novamente hoje.';
+                
+                if (!confirm(confirmMsg)) return;
+                
+                try {
+                    const currentPlayer = window.getCurrentPlayer ? window.getCurrentPlayer() : null;
+                    
+                    if (currentPlayer && currentPlayer.id === selectedUser.id) {
+                        // Reset local para usuário atual
+                        localStorage.removeItem('lastPlayedDate');
+                        localStorage.removeItem('challengeCompleted');
+                        localStorage.removeItem('dailyProgress');
+                        localStorage.removeItem('todayChallenge');
+                        
+                        // Simular dia anterior
+                        const yesterday = new Date();
+                        yesterday.setDate(yesterday.getDate() - 1);
+                        localStorage.setItem('lastPlayedDate', yesterday.toDateString());
+                        
+                        log('Dia resetado para ' + selectedUser.name, 'success');
+                        showNotification('✅ Dia resetado para ' + selectedUser.name + '!', 'success');
+                        
+                        setTimeout(function() {
+                            window.location.href = 'index.html';
+                        }, 2000);
+                    } else {
+                        showNotification('⚠️ ' + selectedUser.name + ' não é o jogador atual', 'warning');
+                        log('Tentativa de reset para usuário não atual: ' + selectedUser.name, 'warning');
+                    }
+                    
+                } catch (error) {
+                    log('Erro ao resetar dia: ' + error.message, 'error');
+                    showNotification('❌ Erro ao resetar dia do usuário!', 'error');
+                }
+            },
+
+            resetStreak: function() {
+                if (!selectedUser) {
+                    showNotification('❌ Nenhum usuário selecionado!', 'error');
+                    return;
+                }
+                
+                const confirmMsg = '🔥 Resetar sequência de ' + selectedUser.name + '?\n\nSequência atual: ' + (selectedUser.current_streak || 0);
+                
+                if (!confirm(confirmMsg)) return;
+                
+                try {
+                    const currentPlayer = window.getCurrentPlayer ? window.getCurrentPlayer() : null;
+                    
+                    if (currentPlayer && currentPlayer.id === selectedUser.id) {
+                        currentPlayer.current_streak = 0;
+                        localStorage.setItem('currentPlayer', JSON.stringify(currentPlayer));
+                        
+                        if (window.supabaseRanking) {
+                            window.supabaseRanking.currentPlayer = currentPlayer;
+                            window.supabaseRanking.syncPlayerToServer();
+                        }
+                        
+                        log('Sequência resetada para ' + selectedUser.name, 'success');
+                        showNotification('✅ Sequência de ' + selectedUser.name + ' resetada!', 'success');
+                        refreshUserList();
+                    } else {
+                        showNotification('⚠️ ' + selectedUser.name + ' não é o jogador atual', 'warning');
+                    }
+                    
+                } catch (error) {
+                    log('Erro ao resetar sequência: ' + error.message, 'error');
+                    showNotification('❌ Erro ao resetar sequência!', 'error');
+                }
+            },
+
+            bonusPoints: function() {
+                if (!selectedUser) {
+                    showNotification('❌ Nenhum usuário selecionado!', 'error');
+                    return;
+                }
+                
+                const points = prompt('⭐ Quantos pontos adicionar para ' + selectedUser.name + '?', '10');
+                
+                if (!points || isNaN(points)) return;
+                
+                const bonusPoints = parseInt(points);
+                
+                if (bonusPoints <= 0) {
+                    showNotification('❌ Pontos devem ser maior que zero!', 'error');
+                    return;
+                }
+                
+                try {
+                    const currentPlayer = window.getCurrentPlayer ? window.getCurrentPlayer() : null;
+                    
+                    if (currentPlayer && currentPlayer.id === selectedUser.id) {
+                        currentPlayer.total_score += bonusPoints;
+                        localStorage.setItem('currentPlayer', JSON.stringify(currentPlayer));
+                        
+                        if (window.supabaseRanking) {
+                            window.supabaseRanking.currentPlayer = currentPlayer;
+                            window.supabaseRanking.syncPlayerToServer();
+                        }
+                        
+                        log(bonusPoints + ' pontos adicionados para ' + selectedUser.name, 'success');
+                        showNotification('✅ ' + bonusPoints + ' pontos adicionados para ' + selectedUser.name + '!', 'success');
+                        refreshUserList();
+                    } else {
+                        showNotification('⚠️ ' + selectedUser.name + ' não é o jogador atual', 'warning');
+                    }
+                    
+                } catch (error) {
+                    log('Erro ao adicionar pontos: ' + error.message, 'error');
+                    showNotification('❌ Erro ao adicionar pontos!', 'error');
+                }
+            },
+
+            resetStats: function() {
+                if (!selectedUser) {
+                    showNotification('❌ Nenhum usuário selecionado!', 'error');
+                    return;
+                }
+                
+                const confirmMsg = '📊 Resetar estatísticas de ' + selectedUser.name + '?\n\nIsso zerará pontos, jogos e sequências.';
+                
+                if (!confirm(confirmMsg)) return;
+                
+                try {
+                    const currentPlayer = window.getCurrentPlayer ? window.getCurrentPlayer() : null;
+                    
+                    if (currentPlayer && currentPlayer.id === selectedUser.id) {
+                        currentPlayer.total_score = 0;
+                        currentPlayer.total_games = 0;
+                        currentPlayer.perfect_hits = 0;
+                        currentPlayer.current_streak = 0;
+                        currentPlayer.best_streak = 0;
+                        
+                        localStorage.setItem('currentPlayer', JSON.stringify(currentPlayer));
+                        
+                        if (window.supabaseRanking) {
+                            window.supabaseRanking.currentPlayer = currentPlayer;
+                            window.supabaseRanking.syncPlayerToServer();
+                        }
+                        
+                        log('Estatísticas resetadas para ' + selectedUser.name, 'success');
+                        showNotification('✅ Estatísticas de ' + selectedUser.name + ' resetadas!', 'success');
+                        refreshUserList();
+                    } else {
+                        showNotification('⚠️ ' + selectedUser.name + ' não é o jogador atual', 'warning');
+                    }
+                    
+                } catch (error) {
+                    log('Erro ao resetar estatísticas: ' + error.message, 'error');
+                    showNotification('❌ Erro ao resetar estatísticas!', 'error');
+                }
+            },
+
+            deleteUser: function() {
+                if (!selectedUser) {
+                    showNotification('❌ Nenhum usuário selecionado!', 'error');
+                    return;
+                }
+                
+                const confirmMsg = '💀 ATENÇÃO!\n\nDeletar usuário ' + selectedUser.name + ' PERMANENTEMENTE?\n\nEsta ação NÃO pode ser desfeita!';
+                
+                if (!confirm(confirmMsg)) return;
+                
+                const doubleConfirm = prompt('Digite "' + selectedUser.name + '" para confirmar a exclusão:');
+                
+                if (doubleConfirm !== selectedUser.name) {
+                    showNotification('❌ Nome não confere. Exclusão cancelada.', 'error');
+                    return;
+                }
+                
+                try {
+                    const currentPlayer = window.getCurrentPlayer ? window.getCurrentPlayer() : null;
+                    
+                    if (currentPlayer && currentPlayer.id === selectedUser.id) {
+                        localStorage.removeItem('currentPlayer');
+                        localStorage.removeItem('lastPlayedDate');
+                        localStorage.removeItem('gameStats');
+                        localStorage.removeItem('playerStats');
+                        
+                        log('Usuário ' + selectedUser.name + ' deletado', 'warning');
+                        showNotification('💀 Usuário ' + selectedUser.name + ' deletado!', 'warning');
+                        
+                        setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+                    } else {
+                        showNotification('⚠️ ' + selectedUser.name + ' não é o jogador atual', 'warning');
+                    }
+                    
+                } catch (error) {
+                    log('Erro ao deletar usuário: ' + error.message, 'error');
+                    showNotification('❌ Erro ao deletar usuário!', 'error');
+                }
+            }
+        };
+
+        // ===== FERRAMENTAS DO SISTEMA =====
+        const SystemTools = {
+            updateStats: async function() {
+                try {
+                    const stats = await window.getGlobalStats();
+                    
+                    document.getElementById('totalUsers').textContent = stats.totalPlayers || allUsers.length;
+                    document.getElementById('totalGames').textContent = stats.totalGames || 0;
+                    document.getElementById('avgScore').textContent = stats.avgScore || 0;
+                    
+                    // Contar usuários ativos hoje
+                    const today = new Date().toDateString();
+                    const activeToday = allUsers.filter(function(user) {
+                        if (!user.last_played) return false;
+                        return new Date(user.last_played).toDateString() === today;
+                    }).length;
+                    
+                    document.getElementById('activeToday').textContent = activeToday;
+                    
+                    log('Estatísticas atualizadas', 'info');
+                    
+                } catch (error) {
+                    log('Erro ao atualizar estatísticas: ' + error.message, 'error');
+                }
+            },
+
+            showData: function() {
+                const data = {};
+                
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    data[key] = localStorage.getItem(key);
+                }
+                
+                log('Dados locais visualizados', 'info');
+                
+                const dataStr = JSON.stringify(data, null, 2);
+                const popup = window.open('', '_blank', 'width=600,height=400');
+                const htmlContent = '<html><head><title>Dados Locais</title></head><body style="font-family: monospace; padding: 20px;"><h2>📋 Dados do localStorage</h2><pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; overflow: auto;">' + dataStr + '</pre></body></html>';
+                popup.document.write(htmlContent);
+            },
+
+            exportData: function() {
+                const data = {
+                    currentPlayer: JSON.parse(localStorage.getItem('currentPlayer') || 'null'),
+                    allUsers: allUsers,
+                    gameStats: JSON.parse(localStorage.getItem('gameStats') || 'null'),
+                    lastPlayedDate: localStorage.getItem('lastPlayedDate'),
+                    exportDate: new Date().toISOString()
+                };
+                
+                const dataStr = JSON.stringify(data, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'quiz-backup-' + new Date().toISOString().split('T')[0] + '.json';
+                a.click();
+                
+                URL.revokeObjectURL(url);
+                
+                log('Dados exportados', 'success');
+                showNotification('💾 Dados exportados com sucesso!', 'success');
+            },
+
+            clearLocal: function() {
+                const confirmMsg = '🧹 ATENÇÃO!\n\nIsso vai limpar TODOS os dados locais!\n\nTodos os usuários e progresso serão perdidos.\n\nContinuar?';
+                
+                if (!confirm(confirmMsg)) return;
+                
+                const doubleConfirm = confirm('💀 Tem certeza ABSOLUTA?\n\nEsta ação NÃO pode ser desfeita!');
+                
+                if (!doubleConfirm) return;
+                
+                localStorage.clear();
+                log('Todos os dados locais limpos', 'warning');
+                showNotification('🧹 Todos os dados locais foram limpos!', 'warning');
+                
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            },
+
+            resetSupabase: function() {
+                const confirmMsg = '☁️ ATENÇÃO!\n\nIsso vai limpar TODOS os dados do Supabase!\n\nTodos os usuários online serão perdidos.\n\nContinuar?';
+                
+                if (!confirm(confirmMsg)) return;
+                
+                const doubleConfirm = confirm('💀 Tem certeza ABSOLUTA?\n\nEsta ação NÃO pode ser desfeita!');
+                
+                if (!doubleConfirm) return;
+                
+                if (window.resetSupabaseRanking) {
+                    window.resetSupabaseRanking();
+                    log('Supabase resetado', 'warning');
+                } else {
+                    showNotification('❌ Função de reset do Supabase não encontrada!', 'error');
+                }
+            },
+
+            syncData: async function() {
+                try {
+                    log('Sincronizando todos os dados...', 'info');
+                    
+                    await refreshUserList();
+                    await SystemTools.updateStats();
+                    
+                    if (window.supabaseRanking && window.supabaseRanking.syncPlayerToServer) {
+                        await window.supabaseRanking.syncPlayerToServer();
+                    }
+                    
+                    log('Sincronização concluída', 'success');
+                    showNotification('🔄 Dados sincronizados com sucesso!', 'success');
+                    
+                } catch (error) {
+                    log('Erro na sincronização: ' + error.message, 'error');
+                    showNotification('❌ Erro na sincronização!', 'error');
+                }
+            },
+
+            newChallenge: function() {
+                const confirmMsg = '🎯 Forçar novo desafio?\n\nIsso vai resetar o progresso do desafio atual.';
+                
+                if (!confirm(confirmMsg)) return;
+                
+                try {
+                    localStorage.removeItem('lastPlayedDate');
+                    localStorage.removeItem('challengeCompleted');
+                    localStorage.removeItem('dailyProgress');
+                    localStorage.removeItem('todayChallenge');
+                    
+                    // Simular dia anterior para forçar novo desafio
+                    const yesterday = new Date();
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    localStorage.setItem('lastPlayedDate', yesterday.toDateString());
+                    
+                    log('Novo desafio forçado', 'info');
+                    showNotification('🎯 Novo desafio disponível!', 'info');
+                    
+                    setTimeout(function() {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                    
+                } catch (error) {
+                    log('Erro ao forçar novo desafio: ' + error.message, 'error');
+                    showNotification('❌ Erro ao forçar novo desafio!', 'error');
+                }
+            }
+        };
+
+        // ===== INICIALIZAÇÃO =====
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Sistema administrativo inicializado', 'info');
+            
+            // Event listeners para botões de ação
+            document.addEventListener('click', function(e) {
+                const target = e.target.closest('[data-action]');
+                if (target) {
+                    const action = target.dataset.action;
+                    if (AdminActions[action]) {
+                        AdminActions[action]();
+                    }
+                }
+                
+                const tool = e.target.closest('[data-tool]');
+                if (tool) {
+                    const toolName = tool.dataset.tool;
+                    if (SystemTools[toolName]) {
+                        SystemTools[toolName]();
+                    }
+                }
+            });
+
+            // Event listeners para seleção de usuário
+            document.getElementById('userSelect').addEventListener('change', loadSelectedUser);
+            document.querySelector('.refresh-btn').addEventListener('click', refreshUserList);
+            
+            // Inicializar sistema
+            initAdminSystem();
+        });
+
+        async function initAdminSystem() {
+            try {
+                log('Carregando dados do sistema...', 'info');
+                await refreshUserList();
+                await SystemTools.updateStats();
+                log('Sistema carregado com sucesso', 'success');
+            } catch (error) {
+                log('Erro ao inicializar: ' + error.message, 'error');
+            }
+        }
+    </script>
+</body>
+</html>
