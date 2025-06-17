@@ -1,405 +1,386 @@
+// ranking.js
 class RankingSystem {
     constructor() {
-        this.currentPlayer = null;
         this.rankings = [];
-        this.currentFilter = 'total';
-        this.currentPage = 1;
-        this.itemsPerPage = 10;
+        this.currentFilter = 'all';
+        this.currentPlayer = null;
         
-        // Simulação de API - Em produção, usar servidor real
-        this.apiUrl = 'https://api.exemplo.com/ranking'; // Substituir por API real
-        this.useLocalStorage = true; // Mudar para false quando tiver API real
-        
-        this.init();
+        // Aguardar DOM carregar antes de inicializar
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.init());
+        } else {
+            this.init();
+        }
     }
 
     init() {
         console.log('🏆 Iniciando sistema de ranking...');
-        this.loadCurrentPlayer();
+        
+        // Verificar se elementos existem antes de usar
+        this.checkRequiredElements();
+        
         this.setupEventListeners();
+        this.loadCurrentPlayer();
         this.loadRankings();
-        this.updateStats();
-        console.log('✅ Sistema de ranking inicializado!');
+    }
+
+    checkRequiredElements() {
+        const requiredElements = [
+            'rankingList',
+            'loadingRanking',
+            'totalPlayers',
+            'totalGames',
+            'avgScore'
+        ];
+
+        const missingElements = [];
+        
+        requiredElements.forEach(id => {
+            const element = document.getElementById(id);
+            if (!element) {
+                missingElements.push(id);
+            }
+        });
+
+        if (missingElements.length > 0) {
+            console.warn('⚠️ Elementos HTML não encontrados:', missingElements);
+            
+            // Criar elementos faltantes dinamicamente
+            this.createMissingElements(missingElements);
+        }
+    }
+
+    createMissingElements(missingElements) {
+        const container = document.querySelector('.container') || document.body;
+        
+        missingElements.forEach(id => {
+            const element = document.createElement('div');
+            element.id = id;
+            
+            switch(id) {
+                case 'loadingRanking':
+                    element.innerHTML = `
+                        <div class="loading" style="display: none;">
+                            <div class="loading-spinner"></div>
+                            <p>Carregando ranking...</p>
+                        </div>
+                    `;
+                    element.style.display = 'none';
+                    break;
+                    
+                case 'rankingList':
+                    element.className = 'ranking-list';
+                    break;
+                    
+                case 'totalPlayers':
+                case 'totalGames':
+                case 'avgScore':
+                    element.textContent = '0';
+                    break;
+            }
+            
+            container.appendChild(element);
+        });
     }
 
     setupEventListeners() {
-        // Salvar nome do jogador
-        document.getElementById('savePlayerBtn').onclick = () => this.savePlayer();
-        document.getElementById('changeNameBtn').onclick = () => this.changePlayerName();
-        
-        // Enter no input do nome
-        document.getElementById('playerName').onkeypress = (e) => {
-            if (e.key === 'Enter') this.savePlayer();
-        };
-        
-        // Filtros do ranking
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.onclick = () => this.changeFilter(btn.dataset.filter);
+        // Filtros de ranking
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const filter = e.target.dataset.filter;
+                this.setFilter(filter);
+            });
         });
-        
-        // Atualizar ranking
-        document.getElementById('refreshBtn').onclick = () => this.loadRankings();
-        
-        // Paginação
-        document.getElementById('prevPage').onclick = () => this.changePage(-1);
-        document.getElementById('nextPage').onclick = () => this.changePage(1);
+
+        // Botão de atualizar
+        const refreshBtn = document.getElementById('refreshRanking');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => this.loadRankings());
+        }
     }
 
     loadCurrentPlayer() {
-        const saved = localStorage.getItem('currentPlayer');
-        if (saved) {
-            this.currentPlayer = JSON.parse(saved);
+        try {
+            // Tentar carregar do sistema Supabase primeiro
+            if (typeof window.getCurrentPlayer === 'function') {
+                this.currentPlayer = window.getCurrentPlayer();
+                console.log('👤 Jogador atual (Supabase):', this.currentPlayer?.name || 'Nenhum');
+            } else {
+                // Fallback para localStorage
+                const localPlayer = localStorage.getItem('currentPlayer');
+                if (localPlayer) {
+                    this.currentPlayer = JSON.parse(localPlayer);
+                    console.log('👤 Jogador atual (Local):', this.currentPlayer?.name || 'Nenhum');
+                }
+            }
+
             this.showPlayerInfo();
-        } else {
-            this.showLoginForm();
+        } catch (error) {
+            console.error('❌ Erro ao carregar jogador atual:', error);
         }
-    }
-
-    savePlayer() {
-        const nameInput = document.getElementById('playerName');
-        const name = nameInput.value.trim();
-        
-        if (!name) {
-            alert('⚠️ Por favor, digite um nome!');
-            return;
-        }
-        
-        if (name.length > 20) {
-            alert('⚠️ Nome muito longo! Máximo 20 caracteres.');
-            return;
-        }
-        
-        this.currentPlayer = {
-            id: this.generatePlayerId(),
-            name: name,
-            totalScore: 0,
-            totalGames: 0,
-            perfectHits: 0,
-            currentStreak: 0,
-            bestStreak: 0,
-            joinDate: new Date().toISOString(),
-            lastPlayed: null
-        };
-        
-        localStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
-        this.showPlayerInfo();
-        this.loadRankings();
-        
-        console.log('👤 Jogador salvo:', this.currentPlayer.name);
-    }
-
-    changePlayerName() {
-        this.showLoginForm();
-        document.getElementById('playerName').value = this.currentPlayer.name;
-    }
-
-    showLoginForm() {
-        document.getElementById('loginForm').style.display = 'flex';
-        document.getElementById('playerInfo').style.display = 'none';
-        document.getElementById('playerName').focus();
     }
 
     showPlayerInfo() {
-        document.getElementById('loginForm').style.display = 'none';
-        document.getElementById('playerInfo').style.display = 'flex';
+        const playerInfoElement = document.getElementById('currentPlayerInfo');
         
-        document.getElementById('playerInitial').textContent = this.currentPlayer.name.charAt(0).toUpperCase();
-        document.getElementById('currentPlayerName').textContent = this.currentPlayer.name;
-        document.getElementById('playerPoints').textContent = this.currentPlayer.totalScore;
-        document.getElementById('playerGames').textContent = this.currentPlayer.totalGames;
-        
-        this.updatePlayerRank();
-    }
-
-    generatePlayerId() {
-        return 'player_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    }
-
-    // Função chamada quando o jogador acerta no jogo principal
-    addScore(hintsUsed) {
-        if (!this.currentPlayer) {
-            console.warn('⚠️ Nenhum jogador logado para adicionar pontuação');
+        // Verificar se elemento existe
+        if (!playerInfoElement) {
+            console.log('ℹ️ Elemento currentPlayerInfo não encontrado, criando...');
+            this.createPlayerInfoElement();
             return;
         }
 
-        // Sistema de pontuação: 5, 4, 3, 2, 1 pontos
-        const points = Math.max(6 - hintsUsed, 1);
-        
-        this.currentPlayer.totalScore += points;
-        this.currentPlayer.totalGames++;
-        this.currentPlayer.lastPlayed = new Date().toISOString();
-        
-        // Atualizar sequências
-        this.currentPlayer.currentStreak++;
-        if (this.currentPlayer.currentStreak > this.currentPlayer.bestStreak) {
-            this.currentPlayer.bestStreak = this.currentPlayer.currentStreak;
-        }
-        
-        // Acerto perfeito
-        if (hintsUsed === 1) {
-            this.currentPlayer.perfectHits++;
-        }
-        
-        // Salvar localmente
-        localStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
-        
-        // Enviar para ranking online
-        this.submitScore();
-        
-        console.log(`🎯 Pontuação adicionada: ${points} pontos (${hintsUsed} dicas)`);
-        
-        // Atualizar interface
-        this.showPlayerInfo();
-        this.loadRankings();
-    }
-
-    // Função chamada quando o jogador erra ou desiste
-    addFailure() {
-        if (!this.currentPlayer) return;
-        
-        this.currentPlayer.totalGames++;
-        this.currentPlayer.currentStreak = 0; // Zerar sequência
-        this.currentPlayer.lastPlayed = new Date().toISOString();
-        
-        localStorage.setItem('currentPlayer', JSON.stringify(this.currentPlayer));
-        this.submitScore();
-        
-        console.log('❌ Falha registrada - sequência zerada');
-        
-        this.showPlayerInfo();
-        this.loadRankings();
-    }
-
-    async submitScore() {
-        if (this.useLocalStorage) {
-            // Simulação com localStorage
-            this.saveToLocalRanking();
+        if (this.currentPlayer) {
+            const rank = this.getPlayerRankPosition();
+            playerInfoElement.innerHTML = `
+                <div class="current-player-card">
+                    <div class="player-avatar">👤</div>
+                    <div class="player-details">
+                        <h3>${this.currentPlayer.name}</h3>
+                        <div class="player-stats">
+                            <span class="stat">🏆 ${this.currentPlayer.total_score || 0} pts</span>
+                            <span class="stat">🎮 ${this.currentPlayer.total_games || 0} jogos</span>
+                            <span class="stat">📍 #${rank} posição</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            playerInfoElement.style.display = 'block';
         } else {
-            // Enviar para API real
-            try {
-                const response = await fetch(`${this.apiUrl}/submit`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(this.currentPlayer)
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Erro ao enviar pontuação');
-                }
-                
-                console.log('✅ Pontuação enviada para o servidor');
-            } catch (error) {
-                console.error('❌ Erro ao enviar pontuação:', error);
-                // Fallback para localStorage
-                this.saveToLocalRanking();
-            }
+            playerInfoElement.innerHTML = `
+                <div class="no-player-info">
+                    <p>👋 Nenhum jogador logado</p>
+                    <small>Jogue uma partida para aparecer no ranking!</small>
+                </div>
+            `;
+            playerInfoElement.style.display = 'block';
         }
     }
 
-    saveToLocalRanking() {
-        let rankings = JSON.parse(localStorage.getItem('globalRankings') || '[]');
+    createPlayerInfoElement() {
+        const container = document.querySelector('.ranking-container') || document.querySelector('.container');
+        if (!container) return;
+
+        const playerInfoElement = document.createElement('div');
+        playerInfoElement.id = 'currentPlayerInfo';
+        playerInfoElement.className = 'current-player-info';
         
-        // Atualizar ou adicionar jogador
-        const existingIndex = rankings.findIndex(p => p.id === this.currentPlayer.id);
-        if (existingIndex >= 0) {
-            rankings[existingIndex] = { ...this.currentPlayer };
+        // Inserir antes da lista de ranking
+        const rankingList = document.getElementById('rankingList');
+        if (rankingList) {
+            container.insertBefore(playerInfoElement, rankingList);
         } else {
-            rankings.push({ ...this.currentPlayer });
+            container.appendChild(playerInfoElement);
         }
         
-        // Ordenar por pontuação total
-        rankings.sort((a, b) => {
-            if (b.totalScore !== a.totalScore) {
-                return b.totalScore - a.totalScore;
-            }
-            // Em caso de empate, ordenar por menor número de jogos
-            return a.totalGames - b.totalGames;
-        });
-        
-        localStorage.setItem('globalRankings', JSON.stringify(rankings));
-        console.log('💾 Ranking salvo localmente');
+        // Chamar novamente para popular o conteúdo
+        this.showPlayerInfo();
     }
 
     async loadRankings() {
-        document.getElementById('loadingRanking').style.display = 'block';
+        const loadingElement = document.getElementById('loadingRanking');
+        const rankingListElement = document.getElementById('rankingList');
+        
+        // Mostrar loading se elemento existir
+        if (loadingElement) {
+            loadingElement.style.display = 'block';
+        }
         
         try {
-            if (this.useLocalStorage) {
-                // Carregar do localStorage
-                this.rankings = JSON.parse(localStorage.getItem('globalRankings') || '[]');
+            // Carregar dados do Supabase
+            if (typeof window.loadOnlineRankings === 'function') {
+                this.rankings = await window.loadOnlineRankings();
+                console.log('🟢 Rankings carregados do Supabase:', this.rankings.length);
             } else {
-                // Carregar da API
-                const response = await fetch(`${this.apiUrl}/rankings?filter=${this.currentFilter}`);
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar rankings');
-                }
-                this.rankings = await response.json();
+                // Fallback local
+                this.rankings = JSON.parse(localStorage.getItem('globalRankings') || '[]');
+                console.log('📱 Rankings carregados localmente:', this.rankings.length);
             }
             
             this.displayRankings();
-            this.updateStats();
+            await this.updateSupabaseStats();
             
         } catch (error) {
             console.error('❌ Erro ao carregar rankings:', error);
-            document.getElementById('rankingList').innerHTML = `
-                <div style="text-align: center; padding: 40px; color: #666;">
-                    ❌ Erro ao carregar ranking<br>
-                    <small>Tente novamente em alguns instantes</small>
-                </div>
-            `;
+            
+            if (rankingListElement) {
+                rankingListElement.innerHTML = `
+                    <div class="error-message">
+                        <div class="error-icon">❌</div>
+                        <h3>Erro ao carregar ranking</h3>
+                        <p>Não foi possível conectar com o Supabase</p>
+                        <button onclick="location.reload()" class="retry-btn">🔄 Tentar Novamente</button>
+                    </div>
+                `;
+            }
         } finally {
-            document.getElementById('loadingRanking').style.display = 'none';
+            // Esconder loading
+            if (loadingElement) {
+                loadingElement.style.display = 'none';
+            }
         }
     }
 
     displayRankings() {
-        const rankingList = document.getElementById('rankingList');
-        
-        if (this.rankings.length === 0) {
-            rankingList.innerHTML = `
-                <div style="text-align: center; padding: 40px; color: #666;">
-                    🏆 Nenhum jogador no ranking ainda<br>
-                    <small>Seja o primeiro a jogar!</small>
+        const rankingListElement = document.getElementById('rankingList');
+        if (!rankingListElement) {
+            console.error('❌ Elemento rankingList não encontrado!');
+            return;
+        }
+
+        if (!this.rankings || this.rankings.length === 0) {
+            rankingListElement.innerHTML = `
+                <div class="empty-ranking">
+                    <div class="empty-icon">🏆</div>
+                    <h3>Ranking Vazio</h3>
+                    <p>Seja o primeiro a jogar e aparecer no ranking!</p>
+                    <a href="index.html" class="play-btn">🎯 Jogar Agora</a>
                 </div>
             `;
             return;
         }
+
+        let filteredRankings = this.applyFilter(this.rankings);
         
-        // Paginação
-        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-        const endIndex = startIndex + this.itemsPerPage;
-        const pageRankings = this.rankings.slice(startIndex, endIndex);
-        
-        rankingList.innerHTML = pageRankings.map((player, index) => {
-            const globalRank = startIndex + index + 1;
+        const rankingHTML = filteredRankings.map((player, index) => {
             const isCurrentPlayer = this.currentPlayer && player.id === this.currentPlayer.id;
+            const position = index + 1;
+            const medal = this.getMedal(position);
             
-            let rankDisplay = '';
-            let itemClass = 'ranking-item';
+            // Calcular taxa de acerto
+            const winRate = player.total_games > 0 ? 
+                Math.round((player.total_score / (player.total_games * 5)) * 100) : 0;
             
-            if (globalRank === 1) {
-                rankDisplay = '<div class="rank-medal">🥇</div>';
-                itemClass += ' top-1';
-            } else if (globalRank === 2) {
-                rankDisplay = '<div class="rank-medal">🥈</div>';
-                itemClass += ' top-2';
-            } else if (globalRank === 3) {
-                rankDisplay = '<div class="rank-medal">🥉</div>';
-                itemClass += ' top-3';
-            } else {
-                rankDisplay = `<div class="rank-position">#${globalRank}</div>`;
-                itemClass += ' top-other';
-            }
-            
-            if (isCurrentPlayer) {
-                itemClass += ' current-player';
-            }
-            
-            const winRate = player.totalGames > 0 
-                ? Math.round((player.totalScore / (player.totalGames * 5)) * 100)
-                : 0;
-            
+            // Formatar última jogada
+            const lastPlayed = player.last_played ? 
+                new Date(player.last_played).toLocaleDateString('pt-BR') : 'Nunca';
+
             return `
-                <div class="${itemClass}">
-                    ${rankDisplay}
-                    <div class="player-avatar-small">
-                        ${player.name.charAt(0).toUpperCase()}
+                <div class="ranking-item ${isCurrentPlayer ? 'current-player' : ''}" data-position="${position}">
+                    <div class="rank-position">
+                        <span class="medal">${medal}</span>
+                        <span class="position">#${position}</span>
                     </div>
-                    <div class="player-info-rank">
+                    
+                    <div class="player-info">
                         <div class="player-name">
                             ${player.name}
-                            ${isCurrentPlayer ? ' (Você)' : ''}
+                            ${isCurrentPlayer ? '<span class="you-badge">VOCÊ</span>' : ''}
                         </div>
-                        <div class="player-stats">
-                            ${player.totalGames} partidas • ${winRate}% acerto
-                            ${player.currentStreak > 0 ? ` • 🔥${player.currentStreak}` : ''}
+                        <div class="player-details">
+                            <span class="detail">🏆 ${player.total_score || 0} pts</span>
+                            <span class="detail">🎮 ${player.total_games || 0} jogos</span>
+                            <span class="detail">⭐ ${player.perfect_hits || 0} perfeitos</span>
+                            <span class="detail">🔥 ${player.best_streak || 0} sequência</span>
                         </div>
                     </div>
-                    <div class="player-score">
-                        <div class="score-value">${player.totalScore}</div>
-                        <div class="score-games">pontos</div>
+                    
+                    <div class="player-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">${winRate}%</span>
+                            <span class="stat-label">Taxa</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">${player.current_streak || 0}</span>
+                            <span class="stat-label">Atual</span>
+                        </div>
+                        <div class="last-played">
+                            <small>Último: ${lastPlayed}</small>
+                        </div>
                     </div>
                 </div>
             `;
         }).join('');
-        
-        this.updatePagination();
-    }
 
-    updatePagination() {
-        const totalPages = Math.ceil(this.rankings.length / this.itemsPerPage);
+        rankingListElement.innerHTML = rankingHTML;
         
-        document.getElementById('pageInfo').textContent = `Página ${this.currentPage} de ${totalPages}`;
-        document.getElementById('prevPage').disabled = this.currentPage === 1;
-        document.getElementById('nextPage').disabled = this.currentPage === totalPages || totalPages === 0;
-    }
-
-    changePage(direction) {
-        const totalPages = Math.ceil(this.rankings.length / this.itemsPerPage);
-        const newPage = this.currentPage + direction;
-        
-        if (newPage >= 1 && newPage <= totalPages) {
-            this.currentPage = newPage;
-            this.displayRankings();
+        // Scroll para jogador atual se estiver na lista
+        if (this.currentPlayer) {
+            setTimeout(() => {
+                const currentPlayerElement = document.querySelector('.ranking-item.current-player');
+                if (currentPlayerElement) {
+                    currentPlayerElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 500);
         }
     }
 
-    changeFilter(filter) {
+    applyFilter(rankings) {
+        switch(this.currentFilter) {
+            case 'top10':
+                return rankings.slice(0, 10);
+            case 'recent':
+                return rankings
+                    .filter(p => p.last_played)
+                    .sort((a, b) => new Date(b.last_played) - new Date(a.last_played))
+                    .slice(0, 20);
+            default:
+                return rankings;
+        }
+    }
+
+    getMedal(position) {
+        switch(position) {
+            case 1: return '🥇';
+            case 2: return '🥈';
+            case 3: return '🥉';
+            default: return '🏅';
+        }
+    }
+
+    setFilter(filter) {
         this.currentFilter = filter;
-        this.currentPage = 1;
         
         // Atualizar botões
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.classList.remove('active');
         });
-        document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
         
-        this.loadRankings();
+        const activeBtn = document.querySelector(`[data-filter="${filter}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+        }
+        
+        this.displayRankings();
     }
 
-    updatePlayerRank() {
-        if (!this.currentPlayer) return;
+    getPlayerRankPosition() {
+        if (!this.currentPlayer || !this.rankings.length) return 0;
         
-        const playerRank = this.rankings.findIndex(p => p.id === this.currentPlayer.id) + 1;
-        document.getElementById('playerRank').textContent = playerRank > 0 ? `#${playerRank}` : '#-';
+        const position = this.rankings.findIndex(p => p.id === this.currentPlayer.id);
+        return position >= 0 ? position + 1 : 0;
     }
 
-    updateStats() {
-        // Estatísticas globais
-        document.getElementById('totalPlayers').textContent = this.rankings.length;
-        
-        const totalGames = this.rankings.reduce((sum, p) => sum + p.totalGames, 0);
-        document.getElementById('totalGames').textContent = totalGames;
-        
-        const avgScore = this.rankings.length > 0 
-            ? Math.round(this.rankings.reduce((sum, p) => sum + p.totalScore, 0) / this.rankings.length)
-            : 0;
-        document.getElementById('avgScore').textContent = avgScore;
-        
-        // Estatísticas do jogador atual
-        if (this.currentPlayer) {
-            document.getElementById('perfectHits').textContent = this.currentPlayer.perfectHits;
-            document.getElementById('currentStreak').textContent = this.currentPlayer.currentStreak;
-            document.getElementById('bestStreak').textContent = this.currentPlayer.bestStreak;
-            
-            const winRate = this.currentPlayer.totalGames > 0 
-                ? Math.round((this.currentPlayer.totalScore / (this.currentPlayer.totalGames * 5)) * 100)
-                : 0;
-            document.getElementById('winRate').textContent = `${winRate}%`;
+    async updateSupabaseStats() {
+        try {
+            if (typeof window.getGlobalStats === 'function') {
+                const stats = await window.getGlobalStats();
+                
+                const totalPlayersElement = document.getElementById('totalPlayers');
+                const totalGamesElement = document.getElementById('totalGames');
+                const avgScoreElement = document.getElementById('avgScore');
+                
+                if (totalPlayersElement) totalPlayersElement.textContent = stats.totalPlayers;
+                if (totalGamesElement) totalGamesElement.textContent = stats.totalGames;
+                if (avgScoreElement) avgScoreElement.textContent = stats.avgScore;
+                
+                console.log('📊 Estatísticas Supabase atualizadas:', stats);
+            }
+        } catch (error) {
+            console.error('❌ Erro ao carregar estatísticas Supabase:', error);
         }
     }
 }
 
-// Inicializar sistema de ranking
+// Inicializar sistema
 const rankingSystem = new RankingSystem();
 
-// Função global para ser chamada pelo jogo principal
-window.addGameScore = (hintsUsed) => {
-    rankingSystem.addScore(hintsUsed);
-};
-
-window.addGameFailure = () => {
-    rankingSystem.addFailure();
+// Função global para reset (compatibilidade)
+window.resetLocalRanking = () => {
+    if (confirm('🔄 Resetar ranking local?')) {
+        localStorage.removeItem('globalRankings');
+        localStorage.removeItem('gameStats');
+        location.reload();
+    }
 };

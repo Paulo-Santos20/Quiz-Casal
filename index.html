@@ -1,108 +1,206 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Amore Mio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Supabase SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
-
 <body>
     <div class="container">
-        <header>
-            <h1>🎯 Quiz do casal</h1>
-            <p class="subtitle">Descubra a palavra ou frase através da foto e dicas!</p>
-            <div class="date-display" id="dateDisplay"></div>
+        <!-- Navegação -->
+        <nav class="navigation">
+            <a href="index.html" class="nav-btn active">🎯 Jogar</a>
+            <a href="ranking.html" class="nav-btn">🏆 Ranking</a>
+        </nav>
 
-            <!-- Navegação com Ranking -->
-            <nav class="navigation">
-                <a href="index.html" class="nav-btn active">
-                    🎯 Jogar
-                </a>
-                <a href="ranking.html" class="nav-btn">
-                    🏆 Ranking
-                </a>
-            </nav>
+        <header class="header">
+            <h1>🎯 Quiz Diário - Amore Mio</h1>
+            <p class="subtitle">Descubra os momentos especiais do casal!</p>
+            <p id="dateDisplay" class="date-display"></p>
+            <div class="challenge-info">
+                <span id="challengeNumber">Desafio #1</span>
+                <div class="countdown-container">
+                    <span class="countdown-label">Próximo desafio em:</span>
+                    <span id="countdown" class="countdown-time">00:00:00</span>
+                </div>
+            </div>
         </header>
 
-        <main class="game-container">
-            <div class="challenge-card">
-                <div class="image-container">
-                    <img id="challengeImage" src="" alt="Imagem da dica" />
-                    <div class="image-reveal-overlay hints-1" id="imageOverlay">
-                        <div class="image-reveal-text">
-                            <span class="icon">🖼️</span>
-                            <span class="percentage" id="revealPercentage">25%</span>
-                            <span>revelada</span>
-                        </div>
-                    </div>
+        <main class="game-area">
+            <div class="image-section">
+                <div id="imageContainer" class="image-container">
+                    <img id="challengeImage" src="" alt="Imagem do desafio" class="challenge-image">
+                    <div id="imageOverlay" class="image-reveal-overlay hints-1"></div>
                     <div class="image-overlay">
-                        <span class="challenge-number" id="challengeNumber"></span>
+                        <span id="challengeNumberOverlay" class="challenge-number">Desafio #1</span>
                     </div>
                 </div>
-
-                <div class="content">
-                    <h2>💡 Dicas</h2>
-                    <div class="hints-container" id="hintsContainer">
-                        <!-- Dicas serão adicionadas dinamicamente -->
-                    </div>
-
-                    <div class="hint-progress">
-                        <span>Dica <span id="currentHint">1</span> de 5 | Tentativas: <span
-                                id="attempts">0</span></span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progressFill"></div>
-                        </div>
-                    </div>
-
-                    <div class="input-section">
-                        <input type="text" id="answerInput" placeholder="Digite sua resposta aqui..." maxlength="50" />
-                        <button id="submitBtn" class="submit-btn" type="button">
-                            Tentar Resposta
-                        </button>
-                    </div>
-
-                    <div class="action-buttons">
-                        <button id="giveUpBtn" class="give-up-btn" type="button">
-                            🏳️ Desistir e Ver Resposta
-                        </button>
-                    </div>
-
-                    <div class="result" id="result"></div>
-
-                    <div class="stats">
-                        <div class="stat-item">
-                            <span class="stat-number" id="totalPlayed">0</span>
-                            <span class="stat-label">Jogados</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" id="totalCorrect">0</span>
-                            <span class="stat-label">Acertos</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" id="winRate">0%</span>
-                            <span class="stat-label">Taxa de Acerto</span>
-                        </div>
-                    </div>
+                <div class="image-info">
+                    <span class="reveal-text">
+                        <span class="icon">👁️</span>
+                        Revelado: <span id="revealPercentage" class="percentage">25%</span>
+                    </span>
                 </div>
             </div>
 
-            <div class="next-challenge">
-                <p>🕐 Próximo desafio em: <span id="countdown"></span></p>
+            <div class="content">
+                <div class="hints-section">
+                    <h3>💡 Dicas</h3>
+                    <div id="hintsContainer" class="hints-container">
+                        <!-- Dicas serão inseridas dinamicamente -->
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-info">
+                        <span>Dica: <span id="currentHint">1</span>/5</span>
+                        <span>Tentativas: <span id="attempts">0</span></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <input type="text" id="answerInput" placeholder="Digite sua resposta..." class="answer-input">
+                    <div class="button-group">
+                        <button id="submitBtn" class="submit-btn">🎯 Enviar Resposta</button>
+                        <button id="giveUpBtn" class="give-up-btn">🏳️ Desistir</button>
+                    </div>
+                </div>
+
+                <div id="result" class="result" style="display: none;"></div>
             </div>
         </main>
 
-        <footer>
-            <p>Volte amanhã para um novo desafio! 🌟</p>
+        <footer class="stats-footer">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalPlayed">0</span>
+                    <span class="stat-label">Jogados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalCorrect">0</span>
+                    <span class="stat-label">Acertos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="winRate">0%</span>
+                    <span class="stat-label">Taxa</span>
+                </div>
+            </div>
+            <div class="ranking-link">
+                <a href="ranking.html" class="ranking-btn">🏆 Ver Ranking</a>
+            </div>
         </footer>
     </div>
 
-    <!-- CORREÇÃO: Carregar sistema de ranking ANTES do jogo -->
+    <!-- Scripts -->
+    <script src="supabase-config.js"></script>
+    <script src="ranking-supabase.js"></script>
     <script src="script.js"></script>
-    <script src="ranking-jsonbin.js"></script>
-
+    
+    <!-- Script de Countdown -->
+    <script>
+        // Função para atualizar o countdown
+        function updateCountdown() {
+            const now = new Date();
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0); // Meia-noite do próximo dia
+            
+            const timeLeft = tomorrow.getTime() - now.getTime();
+            
+            if (timeLeft > 0) {
+                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                const formattedTime = 
+                    String(hours).padStart(2, '0') + ':' +
+                    String(minutes).padStart(2, '0') + ':' +
+                    String(seconds).padStart(2, '0');
+                
+                document.getElementById('countdown').textContent = formattedTime;
+            } else {
+                document.getElementById('countdown').textContent = '00:00:00';
+                // Aqui você pode adicionar lógica para carregar novo desafio
+                console.log('🎯 Novo desafio disponível!');
+            }
+        }
+        
+        // Função para atualizar a data
+        function updateDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateString = now.toLocaleDateString('pt-BR', options);
+            document.getElementById('dateDisplay').textContent = dateString;
+        }
+        
+        // Função para calcular o número do desafio
+        function updateChallengeNumber() {
+            const startDate = new Date('2024-12-01'); // Data de início do jogo
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            startDate.setHours(0, 0, 0, 0);
+            
+            const diffTime = today.getTime() - startDate.getTime();
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+            
+            const challengeNumber = Math.max(1, diffDays);
+            document.getElementById('challengeNumber').textContent = `Desafio #${challengeNumber}`;
+            
+            const overlayElement = document.getElementById('challengeNumberOverlay');
+            if (overlayElement) {
+                overlayElement.textContent = `Desafio #${challengeNumber}`;
+            }
+            
+            return challengeNumber;
+        }
+        
+        // Inicializar quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🟢 Inicializando countdown e data...');
+            
+            // Atualizar imediatamente
+            updateDate();
+            updateChallengeNumber();
+            updateCountdown();
+            
+            // Atualizar countdown a cada segundo
+            setInterval(updateCountdown, 1000);
+            
+            // Atualizar data a cada minuto
+            setInterval(updateDate, 60000);
+            
+            console.log('✅ Countdown inicializado!');
+        });
+        
+        // Função global para obter o número do desafio atual
+        window.getCurrentChallengeNumber = function() {
+            return updateChallengeNumber();
+        };
+        
+        // Função para verificar se é um novo dia
+        window.checkNewDay = function() {
+            const lastPlayedDate = localStorage.getItem('lastPlayedDate');
+            const today = new Date().toDateString();
+            
+            if (lastPlayedDate !== today) {
+                localStorage.setItem('lastPlayedDate', today);
+                return true; // É um novo dia
+            }
+            return false; // Mesmo dia
+        };
+    </script>
 </body>
-
 </html>

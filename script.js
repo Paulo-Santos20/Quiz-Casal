@@ -606,6 +606,31 @@ class DailyChallenge {
         setInterval(updateCountdown, 1000);
     }
 }
+function updateCountdownStyle() {
+    const countdownElement = document.getElementById('countdown');
+    const timeText = countdownElement.textContent;
+    
+    if (timeText) {
+        const [hours, minutes, seconds] = timeText.split(':').map(Number);
+        const totalMinutes = hours * 60 + minutes;
+        
+        // Remover classes anteriores
+        countdownElement.classList.remove('urgent', 'critical');
+        
+        if (totalMinutes < 10) {
+            // Menos de 10 minutos - crítico
+            countdownElement.classList.add('critical');
+        } else if (totalMinutes < 60) {
+            // Menos de 1 hora - urgente
+            countdownElement.classList.add('urgent');
+        }
+    }
+}
 
+// Atualizar estilo junto com o countdown
+setInterval(function() {
+    updateCountdown();
+    updateCountdownStyle();
+}, 1000);
 // Inicializar
 new DailyChallenge();
